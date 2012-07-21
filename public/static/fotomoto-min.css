@@ -1,0 +1,5355 @@
+.tipsy { padding: 5px; font-size: 10px; opacity: 0.8; filter: alpha(opacity=80); background-repeat: no-repeat;  background-image: url(/assets/tipsy.gif); }
+  .tipsy-inner { padding: 5px 8px 4px 8px; background-color: black; color: white; max-width: 200px; text-align: center; }
+  .tipsy-inner { -moz-border-radius:3px; -webkit-border-radius:3px; }
+  .tipsy-north { background-position: top center; }
+  .tipsy-south { background-position: bottom center; }
+  .tipsy-east { background-position: right center; }
+  .tipsy-west { background-position: left center; }
+.FotomotoToolbarClass {
+	clear: both;
+}
+/*** FOTOMOTO WIDGET CSS ***/
+/*
+Copyright (c) 2010, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.com/yui/license.html
+version: 3.1.0
+build: 2026
+*/
+#fotomotoWidget html{color:#000;background:#FFF;}#fotomotoWidget body,#fotomotoWidget div,#fotomotoWidget dl,#fotomotoWidget dt,#fotomotoWidget dd,#fotomotoWidget ul,#fotomotoWidget ol,#fotomotoWidget li,#fotomotoWidget h1,#fotomotoWidget h2,#fotomotoWidget h3,#fotomotoWidget h4,#fotomotoWidget h5,#fotomotoWidget h6,#fotomotoWidget pre,#fotomotoWidget code,#fotomotoWidget form,#fotomotoWidget fieldset,#fotomotoWidget legend,#fotomotoWidget input,#fotomotoWidget textarea,#fotomotoWidget p,#fotomotoWidget blockquote,#fotomotoWidget th,#fotomotoWidget td{margin:0;padding:0;}#fotomotoWidget table{border-collapse:collapse;border-spacing:0;}#fotomotoWidget fieldset,#fotomotoWidget img{border:0;}#fotomotoWidget address,#fotomotoWidget caption,#fotomotoWidget cite,#fotomotoWidget code,#fotomotoWidget dfn,#fotomotoWidget em,#fotomotoWidget strong,#fotomotoWidget th,#fotomotoWidget var{font-style:normal;font-weight:normal;}#fotomotoWidget li{list-style:none;}#fotomotoWidget caption,#fotomotoWidget th{text-align:left;}#fotomotoWidget h1,#fotomotoWidget h2,#fotomotoWidget h3,#fotomotoWidget h4,#fotomotoWidget h5,#fotomotoWidget h6{font-size:100%;font-weight:normal;}#fotomotoWidget q:before,#fotomotoWidget q:after{content:'';}#fotomotoWidget abbr,#fotomotoWidget acronym{border:0;font-variant:normal;}#fotomotoWidget sup{vertical-align:text-top;}#fotomotoWidget sub{vertical-align:text-bottom;}#fotomotoWidget input,#fotomotoWidget textarea,#fotomotoWidget select{font-family:inherit;font-size:inherit;font-weight:inherit;}#fotomotoWidget input,#fotomotoWidget textarea,#fotomotoWidget select{*font-size:100%;}#fotomotoWidget legend{color:#000;}#fotomotoWidget a{text-decoration:none!important;}
+/*======= END RESET ======*/
+
+
+
+/* =============================================================================
+   reusable styles
+   ========================================================================== */
+.fm-left{float:left!important}
+.fm-right{float:right!important}
+/* clearfix */
+.fm-cf:before, .fm-cf:after { content: ""; display: table; }
+.fm-cf:after { clear: both; }
+.fm-cf { zoom: 1; }
+
+.fm-box_round {
+  -webkit-border-radius: 8px; /* Saf3-4, iOS 1-3.2, Android <e;1.6 */
+     -moz-border-radius: 8px; /* FF1-3.6 */
+          border-radius: 8px; /* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */
+
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+/*                           [to clipboard] [toggle rule off] */
+.fm-box_shadow {
+  -webkit-box-shadow: 0px 1px 2px #333; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+     -moz-box-shadow: 0px 1px 2px #333; /* FF3.5 - 3.6 */
+          box-shadow: 0px 1px 2px #333; /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+}
+
+.fm-box_transition {
+  -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
+     -moz-transition: all 0.2s ease-out;  /* FF4+ */
+      -ms-transition: all 0.2s ease-out;  /* IE10? */
+       -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
+          transition: all 0.2s ease-out;
+}
+
+/*                           [to clipboard] [toggle rule off] */
+.fm-textshadow {
+     text-shadow: 0px 1px 1px #444; /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+}
+
+
+.fm-inline-block{
+	display:-moz-inline-stack;
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+}
+
+.fm-block{
+	display:block!important;
+}
+
+/* For image replacement */
+.fm-ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.fm-ir br { display: none; }
+
+
+/* messages */
+.fm-message{
+	padding:5px 5px 5px 3px!important;
+	-moz-border-radius:5px!important;
+	-webkit-border-radius:5px!important;
+	border-radius:5px!important;
+	margin:5px 0!important;
+	font-size:11px!important;
+}
+
+.fm-message.fm-error{
+  background-color: #df4e5d!important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#df4e5d), to(#cd3540))!important; /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #df4e5d, #cd3540)!important; /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, #df4e5d, #cd3540)!important; /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #df4e5d, #cd3540)!important; /* IE10 */
+  background-image:      -o-linear-gradient(top, #df4e5d, #cd3540)!important; /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #df4e5d, #cd3540)!important;
+  color:#fff!important;
+  border:1px solid #c64f4b!important;
+  -moz-box-shadow:0px 1px 0px #e98490 inset!important;
+  -webkit-box-shadow:0px 1px 0px #e98490 inset!important;
+  box-shadow:0px 1px 0px #e98490 inset!important;
+  text-shadow:0px 1px 0px #890b15;
+	
+}
+
+.fm-message.fm-info{
+  background-color: #54a3da!important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#6ab6e6), to(#54a3da))!important; /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #6ab6e6, #54a3da)!important; /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, #6ab6e6, #54a3da)!important; /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #6ab6e6, #54a3da)!important; /* IE10 */
+  background-image:      -o-linear-gradient(top, #6ab6e6, #54a3da)!important; /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #6ab6e6, #54a3da)!important;
+  color:#fff!important;
+  border:1px solid #6094cd!important;
+  -moz-box-shadow:0px 1px 0px #94cbec inset!important;
+  -webkit-box-shadow:0px 1px 0px #94cbec inset!important;
+  box-shadow:0px 1px 0px #94cbec inset!important;
+  text-shadow:0px 1px 0px #6094cd;
+	
+}
+
+.fm-message.fm-success{
+  background-color: #83c932!important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#83c932), to(#6ea841))!important; /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #83c932, #6ea841)!important; /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, #83c932, #6ea841)!important; /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #83c932, #6ea841)!important; /* IE10 */
+  background-image:      -o-linear-gradient(top, #83c932, #6ea841)!important; /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #83c932, #6ea841)!important;
+  color:#fff!important;
+  border:1px solid #7fc34d!important;
+  -moz-box-shadow:0px 1px 0px #bbe685 inset!important;
+  -webkit-box-shadow:0px 1px 0px #bbe685 inset!important;
+  box-shadow:0px 1px 0px #bbe685 inset!important;
+  text-shadow:0px 1px 0px #44791b;
+	
+}
+
+
+/* ==================== accent colors ======================== */
+/* ----------------------------------------------------------- */
+
+#fotomotoWidget,
+#fotomotoWidget *{
+	font-size:12px!important;
+	font-family: Helvetica, Arial,  sans-serif!important;
+}
+
+#fotomotoWidget .fm-color{
+	color:#FB551E!important;
+}
+#fotomotoWidget .fm-color-on-hover:hover{
+	color:#FB551E!important;
+}
+
+#fotomotoWidget .fm-bgcolor{
+	background-color:#FB551E!important;
+}
+
+#fotomotoWidget a:hover .fm-bgcolor-on-hover{
+	background-color:#FB551E!important;
+}
+
+#fotomotoWidget .fm-bgcolor-gradient,
+#fotomotoWidget .fm-popover .fm-popover-list a.fm-popover-list-item.fm-selected{
+  background-color: #FB551E!important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FE6B2A), to(#DC5324))!important; /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #FE6B2A, #DC5324)!important; /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, #FE6B2A, #DC5324)!important; /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #FE6B2A, #DC5324)!important; /* IE10 */
+  background-image:      -o-linear-gradient(top, #FE6B2A, #DC5324)!important; /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #FE6B2A, #DC5324)!important;
+  color:#fff!important;
+}
+
+#fotomotoWidget .fm-bgcolor-secondary-gradient,
+#fotomotoWidget .fm-bgcolor-secondary-gradient.fm-button{
+  background-color: #DBDBDB!important;
+background-image: -webkit-gradient(linear, left top, left bottom, from(#DBDBDB), to(#bbbbbb))!important;
+background-image: -webkit-linear-gradient(top, #DBDBDB, #bbbbbb)!important;
+background-image: -moz-linear-gradient(top, #DBDBDB, #bbbbbb)!important;
+background-image: -ms-linear-gradient(top, #DBDBDB, #bbbbbb)!important;
+background-image: -o-linear-gradient(top, #DBDBDB, #bbbbbb)!important;
+background-image: linear-gradient(top, #DBDBDB, #bbbbbb)!important;
+text-shadow: 0px 1px 2px white!important;
+color:#666!important;
+cursor:pointer!important;
+}
+
+#fotomotoWidget .fm-bgcolor-secondary-gradient.fm-button:hover{
+	color:#333!important;
+}
+
+#fotomotoWidget .fm-bgcolor-gradient:hover{
+	background-color:#000!important;
+}
+
+#fotomotoWidget .fm-footer .fm-bgcolor-gradient{
+	
+}
+
+#fotomotoWidget .fm-footer .fm-bgcolor-gradient:hover{
+  background: #000!important;
+  
+  
+}
+
+#fotomotoWidget .fm-footer .fm-bgcolor-gradient.fm-disabled-button{
+	border-top:1px solid #aaa!important;
+  border-left:1px solid #bbb!important;
+}
+
+#fotomotoWidget .fm-disabled-button,
+#fotomotoWidget .fm-disabled-button:hover,
+#fotomotoWidget .fm-bgcolor-gradient.fm-disabled-button:hover{
+	color: #aaa!important;
+	background-color: #DBDBDB!important;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#DBDBDB), to(#CFCFCF))!important;
+	background-image: -webkit-linear-gradient(top, #DBDBDB, #CFCFCF)!important;
+	background-image: -moz-linear-gradient(top, #DBDBDB, #CFCFCF)!important;
+	background-image: -ms-linear-gradient(top, #DBDBDB, #CFCFCF)!important;
+	background-image: -o-linear-gradient(top, #DBDBDB, #CFCFCF)!important;
+	background-image: linear-gradient(top, #DBDBDB, #CFCFCF)!important;
+	text-shadow: 0px 1px 2px white!important;
+	cursor:default!important;
+}
+
+#fotomotoWidget .fm-button{
+  font-size:12px!important;
+  font-weight:bold!important;
+  padding:0 10px!important;
+  	background-color: #CBCBCB;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#CBCBCB));
+	background-image: -webkit-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: -moz-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: -ms-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: -o-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: linear-gradient(top, #EEEEEE, #CBCBCB);
+	-moz-border-radius:5px!important;
+	-webkit-border-radius:5px!important;
+	border-radius:5px!important;
+	height:26px!important;
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #fff;
+	line-height:26px!important;
+	-moz-box-shadow:0px 1px 0px #fff inset!important;
+	-webkit-box-shadow:0px 1px 0px #fff inset!important;
+	box-shadow:0px 1px 0px #fff inset!important;
+	color:#555;
+	text-shadow:0px 1px 0px #fff;
+}
+#fotomotoWidget .fm-button.fm-bgcolor-gradient{
+	text-shadow:0px 1px 0px #333;
+	border:none;
+}
+#fotomotoWidget .fm-button.fm-bgcolor-gradient:hover{
+	background:#000!important;
+}
+
+#fotomotoWidget .fm-button:hover{
+	background-color: #bababa!important;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#bababa))!important;
+	background-image: -webkit-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: -moz-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: -ms-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: -o-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: linear-gradient(top, #dddddd, #bababa)!important;
+}
+#fotomotoWidget .fm-button.fm-disabled:hover{
+	background-color: #CBCBCB!important;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#CBCBCB))!important;
+	background-image: -webkit-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: -moz-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: -ms-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: -o-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+}
+
+#fotomotoWidget .fm-button.fm-mini{
+
+  height:20px!important;
+  line-height:20px!important;
+  font-size:10px!important;
+ 
+}
+
+#fotomotoWidget .fm-coming-soon{
+	height:12px!important;
+	line-height:12px!important;
+	color:#fff!important;
+	background-color: #333 !important;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#666), to(#333))!important;
+	background-image: -webkit-linear-gradient(top, #666, #333)!important;
+	background-image: -moz-linear-gradient(top, #666, #333)!important;
+	background-image: -ms-linear-gradient(top, #666, #333)!important;
+	background-image: -o-linear-gradient(top, #666, #333)!important;
+	background-image: linear-gradient(top, #666, #333)!important;
+	font-size:8px!important;
+	-moz-border-radius:6px!important;
+	-webkit-border-radius:6px!important;
+	border-radius:8px!important;
+	text-shadow:none!important;
+	padding:0 4px!important;
+
+}
+
+
+/*======= form elements ======*/
+.fm-form input[type=text],
+.fm-form input[type=password],
+.fm-form textarea{
+	position:relative!important;
+	-moz-border-radius:5px!important;
+	-webkit-border-radius:5px!important;
+	border-radius:5px!important;
+	color:#333;
+	height:24px!important;
+	line-height:24px!important;
+	padding:0 5px!important;
+	-moz-box-shadow:0px 1px 2px  #888 inset!important;
+	-webkit-box-shadow:0px 1px 2px  #888 inset!important;
+	box-shadow:0px 1px 2px  #888 inset!important;
+	border:none!important;
+	
+	border: none!important;
+border-bottom: 1px solid white!important;
+border-right: 1px solid white!important;
+background: rgba(0, 0, 0, 0.07)!important;
+-webkit-border-radius: 6px!important;
+-moz-border-radius: 6px!important;
+border-radius: 6px!important;
+-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12)!important;
+-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12)!important;
+box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12)!important;
+
+	font-size:12px!important;
+}
+
+.fm-form select{
+	background-color:#fff!important;
+}
+
+.fm-form input.fm-error {
+    background: red;
+	background: rgba(255, 0, 0, 0.12)!important;
+}
+
+.fm-form textarea.fm-error {
+    background: red;
+    background: rgba(255, 0, 0, 0.12)!important;
+}
+.fm-form select.fm-error{
+    background: red;
+    background: rgba(255, 0, 0, 0.12)!important;
+}
+
+.fm-form input[type=radio]{
+	width:auto!important;
+}
+
+.fm-form label{
+	display:block;
+	font-size:11px;
+	font-weight:bold;
+	margin:0 0 3px 0;
+	color:#666;
+}
+
+.fm-form .fm-form-row{
+	overflow:hidden;
+	padding:3px!important;
+}
+
+.fm-form .fm-form-row .fm-half{
+	width:50%;
+	float:left;
+}
+
+.fm-form .fm-form-row .fm-third{
+	width:33%;
+	float:left;
+}
+
+.fm-form .fm-form-row .fm-fourth{
+	width:25%;
+	float:left;
+}
+
+
+.fm-form .fm-form-row .fm-full{
+	width:100%;
+	float:left;
+}
+
+
+
+
+/* ==================== widget&& box ========================= */
+/* ----------------------------------------------------------- */
+
+#fotomotoWidget{
+	font-family: Helvetica, Arial,  sans-serif!important;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:10000000;
+	background:url(/assets/60black.png); /* fallback for non-supporting browsers */  
+	background:-webkit-radial-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7));
+    background: -webkit-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7)); /* old WebKit Syntax */  
+    background: -webkit-radial-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7)); /* New WebKit syntax */  
+    background: -moz-radial-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7));  
+    background: -ms-radial-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7)); /* IE10+ */  
+    background: -o-radial-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7)); /* Opera (13?) */  
+    background: radial-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7)); /* standard syntax */  
+	text-align:left;
+
+}
+
+
+
+#fotomotoWidget .fm-widget-box{
+	width:850px!important;
+	height:550px!important;
+	position:fixed!important;
+	top:50%!important;
+	left:50%!important;
+	margin:-275px 0 0 -425px!important;
+	z-index:10000001!important;
+	background:#fff!important;
+	-moz-border-radius:		8px!important;
+	-webkit-border-radius:	8px!important;
+	-border-radius:			8px!important;
+	-moz-box-shadow:    0px 5px 80px #505050!important;
+  	-webkit-box-shadow: 0px 5px 80px #505050!important;
+  	box-shadow:         0px 5px 80px #505050!important;
+	-moz-background-clip: padding!important; -webkit-background-clip: padding-box!important; background-clip: padding-box!important;
+}
+
+.fm-lock-icon{
+	background:url(/assets/widget_sprite.png) -971px -690px no-repeat;
+	width:31px;
+	height:31px;
+	border:none!important;
+	display:block;
+}
+
+
+/* ==================== sprite icons =============================== */
+/* ----------------------------------------------------------- */
+
+#fotomotoWidget img.fm-more-icon{
+	background:url(/assets/widget_sprite.png) -989px -573px no-repeat!important;
+	width:10px!important;
+	height:7px!important;
+}
+
+#fotomotoWidget  a:hover img.fm-more-icon{
+	background:url(/assets/widget_sprite.png) -989px -558px no-repeat!important;
+	
+}
+
+#fotomotoWidget .fm-selected img.fm-more-icon{
+	background:url(/assets/widget_sprite.png) -989px -588px no-repeat!important;
+}
+
+#fotomotoWidget .fm-crop-icon{
+	background:url(/assets/widget_sprite.png) 0 -182px no-repeat!important;
+	width:22px!important;
+	height:22px!important;
+	margin:11px 0 5px 15px!important;
+	display:block!important;
+}
+
+#fotomotoWidget .fm-up-icon{
+	background:url(/assets/widget_sprite.png) -991px -602px no-repeat!important;
+	width:7px!important;
+	height:10px!important;
+	margin:0 5px 0 0!important;
+}
+
+#fotomotoWidget .fm-refresh-icon{
+	background:transparent url(/assets/widget_sprite.png) -982px -421px no-repeat!important;
+	width:14px!important;
+	height:12px!important;
+}
+
+.fm-flip-icon{
+	background:url(/assets/widget_sprite.png) -50px 0px no-repeat!important;
+	width:46px!important;
+	height:19px!important;
+	position:absolute!important;
+	bottom:8px!important;
+	left:10px!important;
+	cursor:pointer!important;
+	z-index:100000000;
+	opacity:0.4!important;
+}
+
+.fm-flip-icon{
+	opacity:0.8!important;
+}
+
+.fm-close-icon{
+	background:url(/assets/widget_sprite.png) 50% -134px no-repeat!important;
+	display:block!important;
+	width:14px!important;
+	height:14px!important;
+}
+
+a:hover .fm-close-icon{
+	background:url(/assets/widget_sprite.png) 50% -111px no-repeat!important;
+}
+
+#fotomotoWidget .fm-50px-icon{
+	width:50px!important;
+	height:50px!important;
+}
+#fotomotoWidget .fm-100px-icon{
+	width:100px!important;
+	height:100px!important;
+}
+
+#fotomotoWidget .fm-greeting-card-icon{
+	background:url(/assets/widget_sprite.png) 0 -550px no-repeat!important;
+}
+#fotomotoWidget .fm-invitation-card-icon{
+	background:url(/assets/widget_sprite.png) -50px -550px no-repeat!important;
+}
+#fotomotoWidget .fm-postcard-icon{
+	background:url(/assets/widget_sprite.png) -100px -550px no-repeat!important;
+}
+#fotomotoWidget .fm-square-card-icon{
+	background:url(/assets/widget_sprite.png) -150px -550px no-repeat!important;
+}
+#fotomotoWidget .fm-mini-card-icon{
+	background:url(/assets/widget_sprite.png) -200px -550px no-repeat!important;
+}
+#fotomotoWidget .fm-photo-card-icon{
+	background:url(/assets/widget_sprite.png) -250px -550px no-repeat!important;
+}
+#fotomotoWidget .fm-canvas-icon{
+	background:url(/assets/widget_sprite.png) -300px -550px no-repeat!important;
+}
+#fotomotoWidget .fm-framed-icon{
+	background:url(/assets/widget_sprite.png) -350px -550px no-repeat!important;
+}
+#fotomotoWidget .fm-photographic-icon{
+	background:url(/assets/widget_sprite.png) -400px -550px no-repeat!important;
+}
+#fotomotoWidget .fm-fineart-icon{
+	background:url(/assets/widget_sprite.png) -450px -550px no-repeat!important;
+}
+#fotomotoWidget .fm-poster-icon{
+	background:url(/assets/widget_sprite.png) -500px -550px no-repeat!important;
+}
+#fotomotoWidget .fm-peel-icon{
+	background:url(/assets/widget_sprite.png) -550px -550px no-repeat!important;
+}
+
+#fotomotoWidget .fm-selected .fm-greeting-card-icon{
+	background:url(/assets/widget_sprite.png) 0 -600px no-repeat!important;
+}
+#fotomotoWidget .fm-selected .fm-invitation-card-icon{
+	background:url(/assets/widget_sprite.png) -50px -600px no-repeat!important;
+}
+#fotomotoWidget .fm-selected .fm-postcard-icon{
+	background:url(/assets/widget_sprite.png) -100px -600px no-repeat!important;
+}
+#fotomotoWidget .fm-selected .fm-square-card-icon{
+	background:url(/assets/widget_sprite.png) -150px -600px no-repeat!important;
+}
+#fotomotoWidget .fm-selected .fm-mini-card-icon{
+	background:url(/assets/widget_sprite.png) -200px -600px no-repeat!important;
+}
+#fotomotoWidget .fm-selected .fm-photo-card-icon{
+	background:url(/assets/widget_sprite.png) -250px -600px no-repeat!important;
+}
+#fotomotoWidget .fm-selected .fm-canvas-icon{
+	background:url(/assets/widget_sprite.png) -300px -600px no-repeat!important;
+}
+#fotomotoWidget .fm-selected .fm-framed-icon{
+	background:url(/assets/widget_sprite.png) -350px -600px no-repeat!important;
+}
+#fotomotoWidget .fm-selected .fm-photographic-icon{
+	background:url(/assets/widget_sprite.png) -400px -600px no-repeat!important;
+}
+#fotomotoWidget .fm-selected .fm-fineart-icon{
+	background:url(/assets/widget_sprite.png) -450px -600px no-repeat!important;
+}
+#fotomotoWidget .fm-selected .fm-peel-icon{
+	background:url(/assets/widget_sprite.png) -550px -600px no-repeat!important;
+}
+#fotomotoWidget .fm-selected .fm-poster-icon{
+	background:url(/assets/widget_sprite.png) -500px -600px no-repeat!important;
+}
+
+#fotomotoWidget .fm-100px-icon.fm-photographic-icon{
+	background:url(/assets/widget_sprite.png) 0px -650px no-repeat!important;
+}
+#fotomotoWidget .fm-100px-icon.fm-canvas-icon{
+	background:url(/assets/widget_sprite.png) -100px -650px no-repeat!important;
+}
+#fotomotoWidget .fm-100px-icon.fm-card-icon{
+	background:url(/assets/widget_sprite.png) -200px -650px no-repeat!important;
+}
+#fotomotoWidget .fm-100px-icon.fm-framed-icon{
+	background:url(/assets/widget_sprite.png) -300px -650px no-repeat!important;
+}
+#fotomotoWidget .fm-100px-icon.fm-fineart-icon{
+	background:url(/assets/widget_sprite.png) -400px -650px no-repeat!important;
+}
+#fotomotoWidget .fm-100px-icon.fm-download-icon{
+	background:url(/assets/widget_sprite.png) -500px -650px no-repeat!important;
+}
+#fotomotoWidget .fm-100px-icon.fm-peel-icon{
+	background:url(/assets/widget_sprite.png) -600px -650px no-repeat!important;
+}
+#fotomotoWidget .fm-100px-icon.fm-poster-icon{
+	background:url(/assets/widget_sprite.png) -700px -650px no-repeat!important;
+}
+
+#fotomotoWidget .fm-rotate-icon{
+	width:36px!important;
+	height:16px!important;
+	background:url(/assets/widget_sprite.png) -125px -2px no-repeat!important;
+}
+
+#fotomotoWidget .fm-align-left-icon{
+	width:17px!important;
+	height:17px!important;
+	background:url(/assets/widget_sprite.png) -168px -1px no-repeat!important;
+}
+#fotomotoWidget .fm-align-middle-icon{
+	width:17px!important;
+	height:17px!important;
+	background:url(/assets/widget_sprite.png) -187px -1px no-repeat!important;
+}
+#fotomotoWidget .fm-align-right-icon{
+	width:17px!important;
+	height:17px!important;
+	background:url(/assets/widget_sprite.png) -206px -1px no-repeat!important;
+}
+
+#fotomotoWidget .fm-canvas-stretch-icon{
+	width:20px;
+	height:17px;
+	background:url(/assets/widget_sprite.png) -979px -639px no-repeat!important;
+	margin-left:3px;
+}
+
+#fotomotoWidget .fm-eye-icon{
+	width:15px;
+	height:10px;
+	background:url(/assets/widget_sprite.png) -985px -660px no-repeat!important;
+}
+#fotomotoWidget a:hover .fm-eye-icon{
+	background:url(/assets/widget_sprite.png) -985px -672px no-repeat!important;
+}
+
+.fotomotoFont {
+  text-indent: -1000px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 20px !important;
+  width:100px!important;
+  position:relative!important;
+  top:0px!important;
+  float:left!important;
+}
+
+.fotomotoFontArial {background:url(/assets/sprite-fonts.png) 0px 0px no-repeat!important;}
+.fotomotoFontBlackLetter {background:url(/assets/sprite-fonts.png) 0px -20px no-repeat!important;}
+.fotomotoFontBodoni {background:url(/assets/sprite-fonts.png) 0px -40px no-repeat!important;}
+.fotomotoFontCalligraphy {background:url(/assets/sprite-fonts.png) 0px -60px no-repeat!important;}
+.fotomotoFontCollege {background:url(/assets/sprite-fonts.png) 0px -80px no-repeat!important;}
+.fotomotoFontComic {background:url(/assets/sprite-fonts.png) 0px -100px no-repeat!important;}
+.fotomotoFontCondensed {background:url(/assets/sprite-fonts.png) 0px -120px no-repeat!important;}
+.fotomotoFontFelt {background:url(/assets/sprite-fonts.png) 0px -140px no-repeat!important;}
+.fotomotoFontFire {background:url(/assets/sprite-fonts.png) 0px -160px no-repeat!important;}
+.fotomotoFontFunScript {background:url(/assets/sprite-fonts.png) 0px -180px no-repeat!important;}
+.fotomotoFontGothic {background:url(/assets/sprite-fonts.png) 0px -200px no-repeat!important;}
+.fotomotoFontHalloween {background:url(/assets/sprite-fonts.png) 0px -220px no-repeat!important;}
+.fotomotoFontHandScript {background:url(/assets/sprite-fonts.png) 0px -240px no-repeat!important;}
+.fotomotoFontHandwritten {background:url(/assets/sprite-fonts.png) 0px -260px no-repeat!important;}
+.fotomotoFontRetro {background:url(/assets/sprite-fonts.png) 0px -280px no-repeat!important;}
+.fotomotoFontRound {background:url(/assets/sprite-fonts.png) 0px -300px no-repeat!important;}
+.fotomotoFontSquare {background:url(/assets/sprite-fonts.png) 0px -320px no-repeat!important;}
+.fotomotoFontThin {background:url(/assets/sprite-fonts.png) 0px -340px no-repeat!important;}
+.fotomotoFontTypewriter {background:url(/assets/sprite-fonts.png) 0px -360px no-repeat!important;}
+
+
+.fm-selected .fotomotoFontArial {background:url(/assets/sprite-fonts.png) -105px 0px no-repeat!important;}
+.fm-selected  .fotomotoFontBlackLetter {background:url(/assets/sprite-fonts.png) -105px -20px no-repeat!important;}
+.fm-selected  .fotomotoFontBodoni {background:url(/assets/sprite-fonts.png) -105px -40px no-repeat!important;}
+.fm-selected  .fotomotoFontCalligraphy {background:url(/assets/sprite-fonts.png) -105px -60px no-repeat!important;}
+.fm-selected  .fotomotoFontCollege {background:url(/assets/sprite-fonts.png) -105px -80px no-repeat!important;}
+.fm-selected  .fotomotoFontComic {background:url(/assets/sprite-fonts.png) -105px -100px no-repeat!important;}
+.fm-selected  .fotomotoFontCondensed {background:url(/assets/sprite-fonts.png) -105px -120px no-repeat!important;}
+.fm-selected  .fotomotoFontFelt {background:url(/assets/sprite-fonts.png) -105px -140px no-repeat!important;}
+.fm-selected  .fotomotoFontFire {background:url(/assets/sprite-fonts.png) -105px -160px no-repeat!important;}
+.fm-selected  .fotomotoFontFunScript {background:url(/assets/sprite-fonts.png) -105px -180px no-repeat!important;}
+.fm-selected  .fotomotoFontGothic {background:url(/assets/sprite-fonts.png) -105px -200px no-repeat!important;}
+.fm-selected  .fotomotoFontHalloween {background:url(/assets/sprite-fonts.png) -105px -220px no-repeat!important;}
+.fm-selected  .fotomotoFontHandScript {background:url(/assets/sprite-fonts.png) -105px -240px no-repeat!important;}
+.fm-selected  .fotomotoFontHandwritten {background:url(/assets/sprite-fonts.png) -105px -260px no-repeat!important;}
+.fm-selected  .fotomotoFontRetro {background:url(/assets/sprite-fonts.png) -105px -280px no-repeat!important;}
+.fm-selected  .fotomotoFontRound {background:url(/assets/sprite-fonts.png) -105px -300px no-repeat!important;}
+.fm-selected  .fotomotoFontSquare {background:url(/assets/sprite-fonts.png) -105px -320px no-repeat!important;}
+.fm-selected  .fotomotoFontThin {background:url(/assets/sprite-fonts.png) -105px -340px no-repeat!important;}
+.fm-selected  .fotomotoFontTypewriter {background:url(/assets/sprite-fonts.png) -105px -360px no-repeat!important;}
+
+/* ==================== help =============================== */
+/* ----------------------------------------------------------- */
+#fotomotoWidget .fm-help ul{
+	
+	font-size:11px!important;
+	margin:10px 0 0!important;
+	padding:0!important;
+	color:#7B7572!important;
+}
+
+#fotomotoWidget .fm-help{
+	display:none;
+	margin:15px!important;
+	padding:0 15px!important;
+	text-shadow:0px 1px 0px #333!important;
+}
+
+#fotomotoWidget .fm-help ul{
+	border-top:1px solid #767676!important;
+	margin:0!important;
+	padding:15px 0 0!important;
+	max-width:300px!important;
+}
+
+
+#fotomotoWidget .fm-help.fm-two-columns ul{
+	max-width:none!important;
+	width:250px!important;
+	float:left!important;
+}
+#fotomotoWidget .fm-help.fm-two-columns ul.fm-col-1{
+	margin-right:15px!important;
+}
+#fotomotoWidget .fm-help ul li.fm-has-photo{
+	margin-top:0px!important;
+	margin-bottom:5px!important;
+	padding-top:0!important;
+	padding-bottom:0!important;
+}
+#fotomotoWidget .fm-help.fm-two-columns ul li.fm-has-photo p{
+	width:170px!important;
+}
+#fotomotoWidget .fm-help.fm-two-columns ul li.fm-has-photo img{
+	border:1px solid #aaa!important;
+}
+
+#fotomotoWidget .fm-help ul.fm-has-photo{
+	max-width:410px!important;
+}
+
+#fotomotoWidget .fm-help ul li{
+	padding:10px 0 10px 0!important;
+	margin:0!important;
+	white-space:normal!important;
+	color:#efefef!important;
+	text-shadow:none!important;
+	line-height:16px!important;
+	font-size:13px!important;
+	text-shadow:0px 1px 0px #666!important;
+}
+
+#fotomotoWidget .fm-help-panel .fm-help{
+	display:block;
+}
+
+#fotomotoWidget .fm-help ul li strong{
+	font-weight:bold!important;
+	font-size:14px!important;
+	display:block!important;
+	margin:0 0 10px 0!important;
+	color:#fff!important;
+	text-shadow:0px 1px 0px #222!important;
+}
+#fotomotoWidget .fm-help ul li.fm-has-photo{
+	overflow:hidden;
+}
+
+#fotomotoWidget .fm-help ul li p{
+	color:#efefef;
+}
+
+#fotomotoWidget .fm-help ul li.fm-has-photo img{
+	float:left!important;
+	width:100px;
+	margin:0 10px 0 0!important;
+}
+#fotomotoWidget .fm-help ul li.fm-has-photo p{
+	float:left!important;
+	width:300px!important;
+}
+
+#fotomotoWidget .fm-help h7{
+	
+	display:block!important;
+	font-size:18px!important;
+	font-weight:bold!important;
+	text-shadow:0px 1px 0px #222!important;
+	margin:0!important;
+	padding:12px 0!important;
+	border-bottom:1px solid #acacac !important;
+	color:#fff!important;
+}
+
+#fotomotoWidget .fm-help-panel .fm-help-exit-link{
+	display:block!important;
+}
+
+#fotomotoWidget .fm-help-panel .fm-help-link{
+	display:none!important;
+}
+
+#fotomotoWidget label{
+	width:auto!important;
+	text-align:left!important;
+}
+/* ==================== header =============================== */
+/* ----------------------------------------------------------- */
+
+
+#fotomotoWidget .fm-header a{
+	color:#fff!important;
+}
+
+#fotomotoWidget .fm-header{
+	height:31px!important;
+	background:#111!important;
+	background: -moz-linear-gradient(center top , #444, #111) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#111))!important;
+	background: -moz-linear-gradient(center top , #444, #111) repeat scroll 0 0 transparent!important;
+	-moz-border-radius:8px 8px 0 0!important;
+	-webkit-border-radius:8px 8px 0 0!important;
+	-border-radius:8px 8px 0 0!important;
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+	
+}
+
+#fotomotoWidget .fm-header .fm-logo{
+	margin:10px 0 0 10px!important;
+	float:left!important;
+	background:transparent!important;
+}
+
+#fotomotoWidget .fm-header .fm-shopping-cart{
+	float:right!important;
+	display:block!important;
+	line-height:10px!important;
+	height:12px!important;
+	background:url(/assets/widget_sprite.png) -988px -16px no-repeat!important;
+	padding-left:20px!important;
+	font-size:10px!important;
+	margin:10px 10px 0 0!important;
+}
+
+#fotomotoWidget .fm-header .fm-tools{
+	float:right!important;
+}
+
+#fotomotoWidget .fm-header .fm-tools li{
+	float:left!important;
+	margin:0 10px 0 0!important;
+	height:31px!important;
+	line-height:31px!important;
+	font-size:10px!important;
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-header .fm-tools li span.fm-label{
+	color:#999!important;
+	margin-right:0px!important;
+}
+
+#fotomotoWidget .fm-header .fm-tools li a.fm-option{
+	min-width:33px!important;
+	text-align:center!important;
+}
+
+#fotomotoWidget .fm-header .fm-tools li a.fm-option span{
+	width:4px!important;
+	height:8px!important;
+	background-color:#fff;
+	background-image:url(/assets/widget_sprite.png)!important;
+	background-position:-992px -4px!important;
+	background-repeat:no-repeat!important;
+	float:right!important;
+	margin:11px 0 0 0!important;
+}
+
+
+#fotomotoWidget .fm-header .fm-tools li  ul.fm-option-list{
+	display:none;
+	-moz-border-radius:6px!important;
+	-webkit-border-radius:6px!important;
+	border-radius:6px!important;
+	position:absolute!important;
+	top:28px!important;
+	right:-10px!important;
+	background:#efefef!important;
+	background: -moz-linear-gradient(center top , #efefef, #ccc) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#efefef), to(#ccc))!important;
+	background: -moz-linear-gradient(center top , #efefef, #ccc) repeat scroll 0 0 transparent!important;
+	white-space:nowrap!important;
+	padding:0 10px!important;
+	height:28px!important;
+	line-height:28px!important;
+	-mox-box-shadow:0px 1px 2px #666;
+	-webkit-box-shadow:0px 1px 2px #666;
+	-box-shadow:0px 1px 2px #666;
+	z-index:5!important;
+}
+
+#fotomotoWidget .fm-header .fm-tools li  ul.fm-option-list li.fm-tail{
+	position:absolute!important;
+	top:-5px!important;
+	right:22px!important;
+	background:url(/assets/widget_sprite.png) -106px -6px no-repeat!important;
+	display:block!important;
+	width:12px!important;
+	height:10px!important;
+}
+
+#fotomotoWidget .fm-header .fm-tools li  ul.fm-option-list li{
+	float:none!important;
+	display:-moz-inline-stack;
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+	height:28px!important;
+	line-height:28px!important;
+	margin:0!important;
+}
+
+#fotomotoWidget .fm-header .fm-tools li  ul.fm-option-list li a{
+	display:-moz-inline-stack;
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+	-moz-border-radius:9px!important;
+	-webkit-border-radius:9px!important;
+	border-radius:9px!important;
+	color:#555!important;
+	text-shadow:0px 1px 0px #fff!important;
+	font-weight:bold;
+	height:18px!important;
+	line-height:18px!important;
+	padding:0px 8px!important;
+	text-shadow:none!important;
+}
+
+#fotomotoWidget .fm-header .fm-tools li  ul.fm-option-list li a:hover{
+	background:#ccc!important;
+	background: -moz-linear-gradient(center top , #aaa, #ccc) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#aaa), to(#ccc))!important;
+	background: -moz-linear-gradient(center top , #ddd, #aaa) repeat scroll 0 0 transparent!important;
+}
+#fotomotoWidget .fm-header .fm-tools li  ul.fm-option-list li a.fm-selected{
+	color:#fff!important;
+	background:#333!important;
+	background: -moz-linear-gradient(center top , #444, #111) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#111))!important;
+	background: -moz-linear-gradient(center top , #444, #111) repeat scroll 0 0 transparent!important;
+}
+
+#fotomotoWidget .fm-header .fm-tools li  ul.fm-option-list li a.fm-close{
+	display:-moz-inline-stack;
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+	-moz-border-radius:9px!important;
+	-webkit-border-radius:9px!important;
+	border-radius:9px!important;
+	color:#555!important;
+	text-shadow:0px 1px 0px #fff!important;
+	font-weight:bold;
+	height:18px!important;
+	line-height:18px!important;
+	padding:0px!important;
+	width:18px!important;
+	text-shadow:none!important;
+	float:none!important;
+	margin:0 0 0 5px!important;
+	background:#aaa!important;
+	background: -moz-linear-gradient(center top , #aaa, #ccc) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#aaa), to(#ccc))!important;
+	background: -moz-linear-gradient(center top , #ddd, #aaa) repeat scroll 0 0 transparent!important;	
+}
+#fotomotoWidget .fm-header .fm-tools li  ul.fm-option-list li a.fm-close:hover{
+	background:#aaa!important;
+	background: -moz-linear-gradient(center top , #888, #aaa) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#888), to(#aaa))!important;
+	background: -moz-linear-gradient(center top , #888, #aaa) repeat scroll 0 0 transparent!important;
+}
+#fotomotoWidget .fm-header .fm-tools li  ul.fm-option-list li a.fm-close span{
+	background:url(/assets/widget_sprite.png) 50% -110px no-repeat!important;
+	display:block;
+}
+
+#fotomotoWidget .fm-header .fm-tools li  ul.fm-option-list li a.fm-close:hover span{
+	background:url(/assets/widget_sprite.png) 50% -132px no-repeat!important;
+}
+#fotomotoWidget .fm-header a.fm-close{
+	width:22px!important;
+	height:22px!important;
+	background:url(/assets/widget_sprite.png) 0 0 no-repeat!important;
+	float:right!important;
+	margin:4px 10px 0 0 !important;
+}
+
+#fotomotoWidget .fm-header a.fm-close:hover{
+	background-position:-25px 0!important;
+}
+
+#fotomotoWidget .fm-products{
+	border-top:1px solid #fff!important;
+	background:#DEDEDE!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #DEDEDE) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#EFEFEF), to(#DEDEDE))!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #DEDEDE) repeat scroll 0 0 transparent!important;
+	height:39px!important;
+}
+
+#fotomotoWidget .fm-products ul{
+	border-right:1px solid #fafafa!important;
+}
+
+#fotomotoWidget .fm-products ul li{
+	float:left!important;
+	height:39px!important;
+	line-height:39px!important;
+	padding:0px!important;
+	font-size:12px!important;
+	position:relative!important;
+	z-index:1!important;
+}
+
+#fotomotoWidget .fm-products ul li em.fm-l,
+#fotomotoWidget .fm-products ul li em.fm-r{
+	position:absolute!important;
+	top:0!important;
+	height:39px!important;
+	width:1px!important;
+}
+
+#fotomotoWidget .fm-products ul li em.fm-l{
+	left:0!important;
+	background:#fafafa!important;
+	z-index:2!important;
+}
+#fotomotoWidget .fm-products ul li em.fm-r{
+	right:0!important;
+	background:#cacaca!important;
+	z-index:2!important;
+}
+
+#fotomotoWidget .fm-products ul li a{
+	color:#555!important;
+	height:39px!important;
+	line-height:39px!important;
+	display:block!important;
+	position:relative!important;
+	padding:0px 10px!important;
+	z-index:1!important;
+}
+#fotomotoWidget .fm-products ul li a:hover{
+	color:#000!important;
+}
+
+
+
+#fotomotoWidget .fm-products ul li a span,
+#fotomotoWidget .fm-product-icon{
+	width:19px!important;
+	height:15px!important;
+	display:-moz-inline-stack;
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+}
+
+#fotomotoWidget .fm-products ul li a span{
+	position:relative!important;
+	top:3px!important;
+	margin-right:5px!important;
+}
+
+#fotomotoWidget .fm-products ul li a.fm-prints span,
+#fotomotoWidget .fm-product-icon.fm-prints{
+	background:url(/assets/widget_sprite.png) -979px -156px!important;
+}
+
+#fotomotoWidget .fm-products ul li a.fm-poster span,
+#fotomotoWidget .fm-product-icon.fm-poster{
+	background:url(/assets/widget_sprite.png) -979px -215px!important;
+}
+
+#fotomotoWidget .fm-products ul li a.fm-framed span,
+#fotomotoWidget .fm-product-icon.fm-framed{
+	background:url(/assets/widget_sprite.png) -979px -270px!important;
+	height:19px!important;
+}
+
+#fotomotoWidget .fm-products ul li a.fm-canvas span,
+#fotomotoWidget .fm-product-icon.fm-canvas{
+	background:url(/assets/widget_sprite.png) -979px -244px!important;
+}
+
+#fotomotoWidget .fm-products ul li a.fm-card span,
+#fotomotoWidget .fm-product-icon.fm-card{
+	background:url(/assets/widget_sprite.png) -979px -185px!important;
+}
+
+#fotomotoWidget .fm-products ul li a.fm-download span,
+#fotomotoWidget .fm-product-icon.fm-download{
+	background:url(/assets/widget_sprite.png) -979px -333px!important;
+}
+
+#fotomotoWidget .fm-products ul li a.fm-ecard span,
+#fotomotoWidget .fm-product-icon.fm-ecard{
+	background:url(/assets/widget_sprite.png) -979px -304px!important;
+}
+
+#fotomotoWidget .fm-products ul li a.fm-calendar span,
+#fotomotoWidget .fm-product-icon.fm-calendar{
+	background:url(/assets/widget_sprite.png) -979px -362px!important;
+	height:17px!important;
+}
+
+#fotomotoWidget .fm-products ul li a.fm-skin span,
+#fotomotoWidget .fm-product-icon.fm-skin{
+	background:url(/assets/widget_sprite.png) -976px -393px!important;
+	width:22px!important;
+}
+
+#fotomotoWidget .fm-products ul li.fm-selected{
+	z-index:2!important;
+}
+#fotomotoWidget .fm-products ul li.fm-selected a{
+	background-color:#fff!important;
+	z-index:2!important;
+}
+
+#fotomotoWidget .fm-products ul li a:hover{
+	background-color:#ddd;
+}
+
+
+#fotomotoWidget .fm-products ul li.fm-selected em.fm-l{
+	z-index: 3!important;
+	background:url(/assets/widget_sprite.png) 0 -30px no-repeat!important;
+	left:-5px!important;
+	width:5px!important;
+}
+
+#fotomotoWidget .fm-products ul li.fm-selected:first-child em.fm-l,
+#fotomotoWidget .fm-products ul li.fm-selected.fm-first em.fm-l{
+	display:none;
+}
+
+#fotomotoWidget .fm-products ul li.fm-selected em.fm-r{
+	background: url(/assets/widget_sprite.png) 100% -30px no-repeat!important;
+	right:-5px!important;
+	width:5px!important;
+	z-index: 3!important;
+}
+
+
+#fotomotoWidget .fm-footer{
+	position:absolute!important;
+	bottom:0!important;
+	left:0!important;
+	width:100%!important;
+	height:39px!important;
+	border-top:1px solid #e3e3e3!important;
+	background:#efefef!important;
+	-moz-border-radius:		0px 0px 8px 8px!important;
+	-webkit-border-radius:	0px 0px 8px 8px!important;
+	-border-radius:			0px 0px 8px 8px!important;
+	box-shadow:0px -1px 4px rgba(0, 0, 0, 0.35) ;
+	-moz-box-shadow:0px -1px 4px rgba(0, 0, 0, 0.35) ;
+	-webkit-box-shadow:0px -1px 4px rgba(0, 0, 0, 0.35) ;
+	-moz-background-clip: padding!important; -webkit-background-clip: padding-box!important; background-clip: padding-box!important;
+	z-index:100000;
+	margin:0;
+}
+
+#fotomotoWidget .fm-footer a.fm-right-button{
+	position:absolute!important;
+	right:0!important;
+	bottom:0!important;
+	-moz-border-radius:		0px 0px 8px 0px!important;
+	-webkit-border-radius:	0px 0px 8px 0px!important;
+	-border-radius:			0px 0px 8px 0px!important;
+	width:175px!important;
+	height:40px!important;
+	color:#fff;
+	font-size:14px;
+	line-height:40px!important;
+	text-align:center!important;
+	font-weight:bold!important;
+	 -moz-background-clip: padding!important; -webkit-background-clip: padding-box!important; background-clip: padding-box!important;
+}
+
+#fotomotoWidget .fm-footer a.fm-left-button{
+	position:absolute!important;
+	left:0!important;
+	bottom:0!important;
+	-moz-border-radius:		0px 0px 0 8px!important;
+	-webkit-border-radius:	0px 0px 0 8px!important;
+	-border-radius:			0px 0px 0 8px!important;
+	width:175px!important;
+	height:39px!important;
+	color:#666;
+	font-size:14px!important;
+	line-height:39px!important;
+	text-align:center!important;
+	font-weight:bold!important;
+	
+	background-color: #DBDBDB!important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#DBDBDB), to(#CFCFCF))!important; /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #DBDBDB, #CFCFCF)!important; /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, #DBDBDB, #CFCFCF)!important; /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #DBDBDB, #CFCFCF)!important; /* IE10 */
+  background-image:      -o-linear-gradient(top, #DBDBDB, #CFCFCF)!important; /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #DBDBDB, #CFCFCF)!important;
+  text-shadow:0px 1px 2px #fff!important;
+  border-right:1px solid #ccc!important;
+}
+
+#fotomotoWidget .fm-footer a.fm-left-button:hover{
+	background-color: #d3d3d3!important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d3d3d3), to(#cccccc))!important; /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #d3d3d3, #cccccc)!important; /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, #d3d3d3, #cccccc)!important; /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #d3d3d3, #cccccc)!important; /* IE10 */
+  background-image:      -o-linear-gradient(top, #d3d3d3, #cccccc)!important; /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #d3d3d3, #cccccc)!important;
+  
+}
+
+#fotomotoWidget .fm-footer .fm-footer-content{
+	margin:0 176px!important;
+	line-height:39px!important;
+	text-align:center;
+	border-left:1px solid #fff!important;
+	border-right:1px solid #fff!important;
+}
+
+#fotomotoWidget .fm-footer .fm-footer-content p.fm-message{
+	font-weight:bold;
+	font-size:11px;
+	color:#666!important;
+	text-shadow:0px 1px 1px #fff;
+	padding:0!important;
+	margin:0!important;
+}
+
+#fotomotoWidget .fm-content .fm-options{
+	width:261px!important;
+	background:url(/assets/bg-options.png) 0 0 repeat-x!important;
+	float:left!important;
+	height:438px!important;
+	overflow:hidden!important;
+	white-space:nowrap!important;
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-content .fm-options .fm-message{
+	white-space:normal!important;
+}
+
+#fotomotoWidget .fm-content .fm-options .fm-options-divider{
+	
+	max-height:436px!important;
+	padding:0!important;
+	width:300%!important;
+	
+}
+
+#fotomotoWidget .fm-content .fm-options .fm-options-divider .fm-main-panel,
+#fotomotoWidget .fm-content .fm-options .fm-options-divider .fm-more-panel{
+	width:260px!important;
+	padding-right:1px!important;
+	float:left;
+	position:relative!important;
+	background:url(/assets/bg-vertical-divider.png) 100% 0% no-repeat!important;
+	overflow-x:hidden!important;
+	overflow-y:auto!important;
+	height:438px!important;
+}
+
+#fotomotoWidget .fm-content .fm-options .fm-options-divider .fm-main-panel{
+	height:406px!important;
+}
+
+#fotomotoWidget .fm-content .fm-options .fm-options-divider .fm-more-panel{
+	display:none;
+}
+
+#fotomotoWidget .fm-help-panel{
+	width:589px!important;
+	top:71px!important;
+	left:261px!important;
+	position:absolute!important;
+	height:438px!important;
+	z-index:100000000000;
+	display:none;
+	background-color: #999999!important;
+  background-image: -webkit-gradient(linear, right top, left top, from(#999999), to(#666666))!important; /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(left, #999999, #666666)!important; /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(left, #999999, #666666)!important; /* FF3.6 */
+  background-image:     -ms-linear-gradient(left, #999999, #666666)!important; /* IE10 */
+  background-image:      -o-linear-gradient(left, #999999, #666666)!important; /* Opera 11.10+ */
+  background-image:         linear-gradient(left, #999999, #666666)!important;
+  text-shadow:0px 1px 2px #fff!important;
+}
+
+#fotomotoWidget  .fm-help-panel-stub{
+	height:405px!important;
+	overflow-x:hidden!important;
+	overflow-y:auto!important;
+}
+
+#fotomotoWidget  .fm-help-close{
+	position:absolute!important;
+	top:45px!important;
+	right:40px!important;
+	display:block!important;
+	color:#ccc!important;
+	text-shadow:none!important;
+	font-weight:bold!important;
+	font-size:11px!important;
+	
+}
+
+#fotomotoWidget  .fm-help-close:hover{
+	color:#222!important;
+}
+
+#fotomotoWidget .fm-help-panel .fm-help-close img{
+	float:left;
+	margin:0 2px 0 0!important;
+}
+
+#fotomotoWidget .fm-content .fm-options .fm-options-divider .fm-more-panel a.fm-back-to-main{
+	float:right!important;
+	padding-left:16px!important;
+	background:url(/assets/widget_sprite.png)  -989px -525px no-repeat!important;
+	color:#777!important;
+	font-size:12px!important;
+	margin-top:3px!important;
+}
+
+
+#fotomotoWidget .fm-content .fm-options .fm-options-divider .fm-more-panel a.fm-back-to-main:hover{
+	background:url(/assets/widget_sprite.png)  -989px -540px no-repeat!important;
+	color:#333!important;
+}
+
+#fotomotoWidget .fm-simple-list {
+	margin-top:5px!important;
+}
+
+#fotomotoWidget .fm-simple-list li{
+	overflow:hidden;
+	padding:5px 0!important;
+	margin:0!important;
+	border-bottom:1px solid #ddd;
+	
+}
+
+#fotomotoWidget .fm-simple-list li.fm-last{border:none!important;}
+
+#fotomotoWidget .fm-simple-list li strong{
+	float:left!important;
+	display:block!important;
+	font-weight:bold!important;
+	color:#444!important;font-size:11px!important;
+}
+
+#fotomotoWidget .fm-simple-list li span{
+	float:right!important;
+	display:block!important;
+	color:#888!important;
+}
+
+
+/* ==================== shopping cart =============================== */
+/* ----------------------------------------------------------- */
+
+#fotomotoWidget .fm-cart-content{
+	
+}
+
+#fotomotoWidget .fm-cart .fm-cart-title{
+	border-top:1px solid #fff!important;
+	background:#DEDEDE!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #DEDEDE) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#EFEFEF), to(#DEDEDE))!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #DEDEDE) repeat scroll 0 0 transparent!important;
+	height:39px!important;
+	line-height:39px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-title h4{
+	color:#666!important;
+	font-size:12px!important;
+	text-shadow:0px 1px 0px #fff;
+	margin:0 0 0 13px!important;
+	padding:0!important;
+	font-weight:bold!important;
+	text-align:left!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-title h4.fm-shipping-address-title{
+	float:left!important;
+	width:377px!important;
+	border-right:1px solid #f5f5f5;
+	text-align:left!important;
+}
+#fotomotoWidget .fm-cart .fm-cart-title h4.fm-shipping-method-title{
+	float:left!important;
+	width:200px!important;
+	border-left:1px solid #d4d4d4;
+	margin-left:0!important;
+	padding-left:10px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-content{
+	width:630px!important;
+	float:left!important;
+	height:436px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary{
+	float:right!important;
+	width:220px!important;
+	background:#efefef url(/assets/vertical-shadow2.png) 0 0 no-repeat!important;
+	height:477px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary li.fm-number-items .fm-label{
+	font-size:12px!important;
+	font-weight:bold;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary li.fm-number-items img{
+	background:url(/assets/widget_sprite.png) -988px -13px no-repeat!important;
+	width:16px!important;
+	height:16px!important;
+	float:left!important;
+	position:relative!important;
+	top:-2px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-image{
+	width:162px!important;
+	float:left!important;
+	padding:0 0 0 13px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-item{
+	width:160px!important;
+	float:left!important;
+	padding:0 0 0 10px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-price,
+#fotomotoWidget .fm-cart .fm-cart-total{
+	width:100px!important;
+	float:left!important;
+	text-align:right!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-head .fm-cart-price,
+#fotomotoWidget .fm-cart .fm-cart-head  .fm-cart-total{
+	text-align:center!important;
+}
+#fotomotoWidget .fm-cart .fm-cart-quantity{
+	width:58px!important;
+	float:left!important;
+	text-align:right!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-head{
+	height:36px!important;
+	background:#f4f4f4!important;
+	font-size:11px!important;
+	line-height:36px!important;
+	color:#666!important;
+}
+#fotomotoWidget .fm-cart  .fm-cart-items{
+	padding-top:0px!important;
+	overflow-y:auto!important;
+	overflow-x:hidden!important;
+	height:402px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-top-shadow{
+	background:url(/assets/horizontal-shadow1.png) 50% 0px no-repeat!important;
+	width:630px!important;
+	height:5px!important;
+	position:absolute!important;
+	top:107px!important;
+	left:0!important;
+	z-index:20!important;
+}
+
+
+#fotomotoWidget .fm-cart  .fm-cart-items li{
+	padding:0px 0!important;
+	background:url(/assets/bg-horizontal-divider.png) 50% 100% no-repeat!important;
+	height:126px!important;
+	font-size:12px!important;
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items .fm-cart-image{
+	width:175px!important;
+	height:124px!important;
+	background-color: #efefef!important;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#efefef))!important;
+	background-image: -webkit-linear-gradient(top, #ffffff, #efefef)!important;
+	background-image: -moz-linear-gradient(top, #ffffff, #efefef)!important;
+	background-image: -ms-linear-gradient(top, #ffffff, #efefef)!important;
+	background-image: -o-linear-gradient(top, #ffffff, #efefef)!important;
+	background-image: linear-gradient(top, #ffffff, #efefef)!important;
+	padding:0!important;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items .fm-cart-image-container{
+	width:175px!important;
+	height:124px!important;
+	display: table-cell!important;
+	vertical-align:middle!important;
+	text-align:center!important;
+	float:none!important;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items a.fm-edit-crop{
+	
+	position:absolute!important;
+	width:54px!important;
+	height:54px!important;
+	left:50%!important;
+	top:50%!important;
+	margin:-27px 0 0 -27px!important;
+	background:rgba(0,0,0,0.5)!important;
+	color:#fff!important;
+	-moz-border-radius:10px!important;
+	-webkit-border-radius:10px!important;
+	border-radius:10px!important;
+	-moz-box-shadow:0px 0px 10px #fff!important;
+	-webkit-box-shadow:0px 0px 10px #fff!important;
+	box-shadow:0px 0px 10px #fff!important;
+	z-index:20!important;
+	font-size:10px!important;
+	text-align:center!important;
+	display:none;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items a.fm-edit-crop:hover{
+	background:rgba(0,0,0,0.8)!important;
+}
+
+
+#fotomotoWidget .fm-cart  .fm-cart-items .fm-cart-image-wrapper,
+#fotomotoWidget .fm-cart  .fm-cart-items .fm-cart-image{
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items .fm-cart-image-wrapper .fm-mask{
+	display:block!important;
+	position:absolute!important;
+	background:rgba(255,255,255,0.7)!important;
+	width:100%!important;
+	height:100%!important;
+	top:0!important;
+	left:0!important;
+	z-index:2!important;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items .fm-cart-image-container .fm-image-crop{
+	position:absolute;
+	z-index:3;
+	border:1px dashed #fff;
+	-moz-box-shadow:0px 0px 6px #666;
+	-webkit-box-shadow:0px 0px 6px #666;
+	-box-shadow:0px 0px 6px #666;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-item,
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-price,
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-total{
+	padding-top:10px!important;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-quantity{
+	padding-top:7px!important;
+}
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-quantity .fm-quantity-input{
+	position:relative!important;
+	-moz-border-radius:5px!important;
+	-webkit-border-radius:5px!important;
+	border-radius:5px!important;
+	
+	height:24px!important;
+	line-height:24px!important;
+	padding:0 14px 0 0px!important;
+	-moz-box-shadow:0px 1px 2px  #aaa inset;
+	-webkit-box-shadow:0px 1px 2px  #aaa inset;
+	box-shadow:0px 1px 2px  #aaa inset;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-quantity .fm-quantity-input a.fm-quantity-increment,
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-quantity .fm-quantity-input a.fm-quantity-decrement{
+	display:block!important;
+	height:10px!important;
+	line-height:8px!important;
+	position:absolute;
+	right:0!important;
+	width:14px!important;
+	color:#fff;
+	font-weight:bold;
+	text-align:center;
+	font-size:11px;
+	text-shadow:0px 1px 0px #bbb!important;
+	background-color: #dddddd;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-quantity .fm-quantity-input a.fm-quantity-increment{
+	top:0!important;
+	-moz-border-radius:0px 5px 0px 0!important;
+	-webkit-border-radius:0px 5px 0px 0!important;
+	border-radius:0px 5px 0px 0!important;
+	border-bottom:1px solid #ccc;
+	border-right:1px solid #ccc;
+	border-left:1px solid #ccc;
+	border-top:1px solid #bbb;
+	
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-quantity .fm-quantity-input a.fm-quantity-decrement{
+	bottom:0!important;
+	-moz-border-radius: 0 0 5px 0!important;
+	-webkit-border-radius:0 0 5px 0!important;
+	border-radius:0 0 5px 0!important;
+	border-top:1px solid #eee!important;
+	border-right:1px solid #ccc!important;
+	border-bottom:1px solid #ccc!important;
+	border-left:1px solid #ccc;
+}
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-quantity .fm-quantity-input a.fm-quantity-increment:hover,
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-quantity .fm-quantity-input a.fm-quantity-decrement:hover{
+	background:#888!important;
+	color:#fff!important;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items li .fm-cart-quantity .fm-quantity-input .fm-quantity{
+	width:24px;
+	text-align:center!important;
+	height:24px!important;
+	line-height:24px!important;
+	border:none!important;
+	padding:0!important;
+	background:transparent!important;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items a.fm-remove-item,
+#fotomotoWidget .fm-cart  .fm-cart-items a.fm-edit-options{
+	color:#aaa!important;
+	position:absolute!important;
+	bottom:15px!important;
+	padding:0 0 0 12px!important;
+	margin:0!important;
+	background-image:url(/assets/widget_sprite.png)!important;
+	background-repeat:no-repeat!important;
+	font-size:10px!important;
+	display:none;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items a.fm-remove-item{
+	background-position:-986px -453px!important;
+	right:15px!important;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items a.fm-edit-options{
+	right:100px!important;
+	background-position:-982px -468px!important;
+	padding:0 0 0 18px!important;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items a.fm-remove-item:hover,
+#fotomotoWidget .fm-cart  .fm-cart-items a.fm-edit-options:hover{
+	color:#333!important;
+	
+}
+#fotomotoWidget .fm-cart  .fm-cart-items a.fm-remove-item:hover{
+	background-position:-496px -111px!important;
+}
+#fotomotoWidget .fm-cart  .fm-cart-items a.fm-edit-options:hover{
+	background-position:-982px -437px!important;
+}
+#fotomotoWidget .fm-cart  .fm-cart-items .fm-cart-item h6{
+	margin:0 0 5px 0!important;
+	padding:0!important;
+	font-size:12px!important;
+	font-weight:bold!important;
+	color:#555!important;
+	line-height:18px!important;
+}
+
+#fotomotoWidget .fm-cart  .fm-cart-items .fm-cart-item ul.fm-item-options li{
+	font-size:11px!important;
+	color:#666!important;
+	width:auto!important;
+	height:auto!important;
+	margin:0!important;
+	padding:2px 0 2px 13px!important;
+	background:url(/assets/widget_sprite.png) -693px -156px no-repeat!important;
+	
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary{
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary h5{
+	color:#666!important;
+	font-size:12px!important;
+	text-shadow:0px 1px 0px #fff;
+	margin:0px 0 0 10px!important;
+	padding:0!important;
+	line-height:39px!important;
+	font-weight:bold!important;
+}
+
+
+#fotomotoWidget .fm-cart .fm-cart-summary ul{
+	margin:8px 10px 0!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary ul li{
+	background:url(/assets/2line-h.gif) 0 100% repeat-x!important;
+	padding:5px 0!important;
+	overflow:hidden!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary ul li:last-child{
+	background:none!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary ul li .fm-label{
+	display:block!important;
+	float:left!important;
+	font-size:11px!important;
+	color:#999!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary ul li .fm-data{
+	display:block!important;
+	float:right!important;
+	font-size:11px!important;
+	color:#555!important;
+}
+
+
+#fotomotoWidget .fm-cart .fm-cart-summary ul li a.fm-btn{
+	-moz-border-radius:5px!important;
+	-webkit-border-radius:5px!important;
+	border-radius:5px!important;
+	color:#777;
+	padding:2px 5px!important;
+	background:#ddd;
+	display:block;
+	font-size:11px;
+	color:#555;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary ul li.fm-not-set .fm-calculate{
+	float:right;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary ul li.fm-set .fm-calculate{
+	float:right!important;
+	text-indent:-9999px!important;
+	width:16px!important;
+	height:16px!important;
+	position:relative!important;
+	top:1px!important;
+	right:0px!important;
+	background:transparent url(/assets/widget_sprite.png) -982px -421px no-repeat!important;
+	-moz-box-shadow:none!important;
+	-webkit-box-shadow:none!important;
+	box-shadow:none!important;
+	padding:0!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary ul li a.fm-btn:hover{
+	background-color: #888888;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#888888), to(#aaaaaa));
+	background-image: -webkit-linear-gradient(top, #888888, #aaaaaa);
+	background-image: -moz-linear-gradient(top, #888888, #aaaaaa);
+	background-image: -ms-linear-gradient(top, #888888, #aaaaaa);
+	background-image: -o-linear-gradient(top, #888888, #aaaaaa);
+	background-image: linear-gradient(top, #888888, #aaaaaa);
+	color:#fff;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary .fm-hidden-panel{
+	clear:both!important;
+	padding:10px 0 !important;
+	margin:5px 0 0!important;
+	background: #efefef; /* Old browsers */
+	background: -moz-linear-gradient(left, #efefef 0%, #dddddd 50%, #efefef 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#efefef), color-stop(50%,#dddddd), color-stop(100%,#efefef)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, #efefef 0%,#dddddd 50%,#efefef 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, #efefef 0%,#dddddd 50%,#efefef 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, #efefef 0%,#dddddd 50%,#efefef 100%); /* IE10+ */
+	background: linear-gradient(left, #efefef 0%,#dddddd 50%,#efefef 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#efefef',GradientType=1 ); /* IE6-9 */
+	position:relative;
+	margin-bottom:-3px!important;
+	display:none;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary .fm-hidden-panel#fm-coupon{
+	
+}
+
+
+#fotomotoWidget .fm-cart .fm-cart-summary .fm-hidden-panel img{
+	width:100%!important;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary .fm-hidden-panel .fm-label{
+	clear:left!important;
+	display:block!important;
+	width:68px!important;
+	text-align:right!important;
+	height:20px!important;
+	line-height:22px!important;
+	margin:0 5px 0 0!important;
+	float:left!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary .fm-hidden-panel input{
+	width:120px;
+	-moz-border-radius:5px!important;
+	-webkit-border-radius:5px!important;
+	border-radius:5px!important;
+	height:20px!important;
+	line-height:20px!important;
+	border:none!important;
+	padding:0 3px!important;
+	background:#fff!important;
+	-moz-box-shadow:0px 1px 2px  #aaa inset;
+	-webkit-box-shadow:0px 1px 2px  #aaa inset;
+	box-shadow:0px 1px 2px  #aaa inset;
+}
+
+
+#fotomotoWidget .fm-cart .fm-cart-summary .fm-hidden-panel select{
+	width:122px!important;
+	font-size:11px!important;
+}
+
+
+#fotomotoWidget .fm-cart .fm-cart-summary .fm-row{
+	margin:0 0 5px 0!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary .fm-hidden-panel .fm-btn{
+	font-size:11px!important;
+	float:right!important;
+	margin-left:5px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary .fm-accepted-cards{
+	display:block!important;
+	background:url(/assets/widget_sprite.png) 0px -154px no-repeat!important;
+	width:104px!important;
+	height:20px!important;
+	position:absolute!important;
+	bottom:10px!important;
+	left:50%!important;
+	margin-left:-50px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary li.fm-total{
+	font-weight:bold!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary li.fm-processing-fee{
+	padding-top:0!important;
+	margin-top:0!important;
+}
+#fotomotoWidget .fm-cart .fm-cart-summary li.fm-processing-fee .fm-message{
+	color:#888!important;
+	font-size:11px!important;
+	text-shadow:0px 1px 0px #fff!important;
+}
+#fotomotoWidget .fm-cart .fm-cart-summary li.fm-processing-fee .fm-hidden-panel{
+	margin-top:0!important;
+}
+
+#fotomotoWidget .fm-cart .fm-cart-summary li.fm-processing-fee .fm-message sup{
+	float:left!important;
+}
+#fotomotoWidget .fm-cart .fm-cart-summary li.fm-processing-fee .fm-message span{
+	text-align: center;
+	display:block!important;
+}
+
+
+/* ==================== shipping  =============================== */
+/* ----------------------------------------------------------- */
+
+#fotomotoWidget .fm-shipping-address{
+	margin: 0!important;
+	padding:5px 8px 10px 12px!important;
+	width:370px!important;
+	float:left!important;
+	background:#f8f8f8 url(/assets/ricepaper2.jpg)!important;
+	height:425px!important;
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-shipping-address h6,
+#fotomotoWidget .fm-shipping-method h6{
+	font-size:12px;
+	margin:3px 0 0px 0!important;
+	padding-bottom:5px!important;
+	color:#666!important;
+	font-weight:bold!important;
+	border-bottom:2px solid #ccc;
+}
+
+
+#fotomotoWidget .fm-shipping-address .fm-note{
+	position:absolute;
+	bottom:13px;
+	left:13px;
+	font-size:11px;
+	color:#888;
+}
+
+#fotomotoWidget .fm-shipping-address .fm-note strong{
+	font-weight:bold!important;
+}
+
+
+#fotomotoWidget .fm-shipping-address .fm-half input{
+	width:91%!important;
+}
+
+#fotomotoWidget .fm-shipping-address .fm-fourth input{
+	width:90%!important;
+}
+#fotomotoWidget .fm-shipping-address .fm-half select{
+	width:96%!important;
+}
+
+#fotomotoWidget .fm-shipping-address .fm-full input{
+	width:95%!important;
+}
+
+#fotomotoWidget .fm-update-shipping img{
+	margin-right:5px!important;
+}
+
+#fotomotoWidget .fm-shipping-method{
+	width:220px!important;
+	float:left!important;
+	padding:5px 10px 0!important;
+	height:434px!important;
+	overflow-x:hidden;
+	overflow-y:auto;
+	background:url(/assets/vertical-shadow2.png) 0 -100px no-repeat!important;
+	font-size:11px!important;
+}
+
+#fotomotoWidget .fm-shipping-method .fm-shipping-panel{
+	margin-bottom:12px!important;
+	display:none;
+}
+
+#fotomotoWidget .fm-shipping-method .fm-shipping-row{
+	padding:6px 5px!important;
+	border-bottom:1px solid #efefef!important;
+	color:#555!important;
+	cursor:pointer!important;
+}
+
+
+#fotomotoWidget .fm-shipping-method .fm-shipping-row:last-child{
+	border:none!important;
+}
+
+#fotomotoWidget .fm-shipping-method .fm-product-icon{
+	position:relative!important;
+	top:3px!important;
+}
+
+#fotomotoWidget .fm-shipping-method .fm-row-main input{
+	width:12px!important;
+	float:left!important;
+}
+
+#fotomotoWidget .fm-shipping-method .fm-row-main .fm-shipping-amount{
+	float:left!important;
+	font-size:12px!important;
+	margin:0 0 0 4px!important;
+}
+
+#fotomotoWidget .fm-shipping-method .fm-selected .fm-shipping-amount{
+	font-weight:bold!important;
+}
+
+#fotomotoWidget .fm-shipping-method .fm-row-main .fm-shipping-name{
+	float:right!important;
+}
+
+#fotomotoWidget .fm-shipping-method .fm-row-sub{
+	margin:4px 0 0!important;
+	color:#888!important;
+}
+
+#fotomotoWidget .fm-shipping-method .fm-row-sub .fm-shipping-package{
+	float:left!important;
+	margin:0 0 0 15px!important;
+	
+}
+
+#fotomotoWidget .fm-shipping-method .fm-row-sub .fm-shipping-estimate{
+	float:right!important;
+}
+
+
+#fotomotoWidget .fm-shipping-method .fm-form-row.fm-selected{
+	background:#efefef;
+}
+
+#fotomotoWidget .fm-shipping-method .fm-empty-shipping{
+	padding-left:35px!important;
+	background:url(/assets/widget_sprite.png) -971px -78px no-repeat!important;
+	font-size:13px!important;
+	line-height:16px!important;
+	color:#999!important;
+}
+
+
+
+
+
+
+/* ==================== prints  =============================== */
+/* ----------------------------------------------------------- */
+#fotomotoWidget .fm-options-section{
+	background:url(/assets/bg-horizontal-hairline.png) 50% 100% repeat-x!important;
+	padding:10px 15px 15px!important;
+}
+#fotomotoWidget .fm-options-section.fm-no-line{
+	background:none!important;
+}
+
+#fotomotoWidget .fm-help-panel .fm-options-section{
+	background:none!important;
+	padding-bottom:0!important;
+}
+
+#fotomotoWidget .fm-options-section .fm-options-label{
+	font-size:11px!important;
+	color:#333!important;
+	text-shadow:0px 1px 0px #fff!important;
+	font-weight:bold!important;
+}
+
+
+#fotomotoWidget .fm-options-section .fm-options-label.fm-edition-label{
+	font-size:10px!important;
+	margin:3px 0 0 0!important;
+	color:#aaa!important;
+}
+
+#fotomotoWidget .fm-options-section .fm-help-link{
+	float:right!important;
+	padding-right:16px;
+	color:#999!important;
+	font-size:10px!important;
+	font-weight:bold!important;
+	background:url(/assets/widget_sprite.png) 100% -485px no-repeat!important;
+	height:16px!important;
+	line-height:16px!important;
+	position:relative!important;
+	top:-1px!important;
+}
+
+#fotomotoWidget .fm-options-section .fm-help-link .fm-help-tail{
+	display:none!important;
+	position:absolute!important;
+	width:18px!important;
+	height:23px!important;
+	background:url(/assets/widget_sprite.png) 0 -269px!important;
+	left:100%!important;
+	top:50%!important;
+	margin-top:-11px!important;
+}
+
+#fotomotoWidget .fm-options-section .fm-help-link.fm-selected .fm-help-tail{
+	display:block!important;
+}
+
+#fotomotoWidget .fm-options-section .fm-help-link:hover{
+	color:#333!important;
+	background:url(/assets/widget_sprite.png) 100% -505px no-repeat!important;
+}
+
+#fotomotoWidget .fm-popover{
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-popover strong{
+	font-weight:bold!important;
+}
+
+#fotomotoWidget .fm-popover .fm-close-icon{
+	position:absolute;
+	top:2px;
+	right:2px;
+}
+
+#fotomotoWidget .fm-popover a.fm-current-selection{
+	-moz-border-radius:4px!important;
+	-webkit-border-radius:4px!important;
+	border-radius:4px!important;
+	background-color: #CBCBCB!important;
+	background: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#CBCBCB))!important;
+	background: -webkit-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background: -moz-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background: -ms-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background: -o-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background: linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	-moz-box-shadow:0px 1px 0px #fff inset!important;
+	-webkit-box-shadow:0px 1px 0px #fff inset!important;
+	box-shadow:0px 1px 0px #fff inset!important;
+	height:22px!important;
+	line-height:22px!important;
+	border:1px solid #ccc!important;
+	padding:0 25px 0 5px!important;
+	position:relative;
+	font-size:12px!important;
+	font-weight:bold!important;
+	color:#555!important;
+	text-shadow:0px 1px 0px #fff!important;
+}
+
+#fotomotoWidget .fm-popover a.fm-current-selection:hover{
+	background-color: #bababa!important;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#bababa))!important;
+	background-image: -webkit-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: -moz-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: -ms-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: -o-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: linear-gradient(top, #dddddd, #bababa)!important;
+	
+}
+
+
+#fotomotoWidget .fm-popover a.fm-current-selection span{
+	height:22px!important;
+	width:20px!important;
+	background-image:url(/assets/widget_sprite.png)!important;
+	background-position:100% -946px!important;
+	background-repeat:no-repeat!important;
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+
+#fotomotoWidget .fm-popover .fm-popover-list{
+	position:absolute;
+	display:none;
+	bottom:100%;
+	left:0;
+	margin-bottom:5px!important;
+	min-width:120px;
+	-moz-border-radius:4px!important;
+	-webkit-border-radius:4px!important;
+	border-radius:4px!important;
+	background: #111!important;
+	background: -moz-linear-gradient(center top , #444, #111) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#111))!important;
+	background: -moz-linear-gradient(center top , #444, #111) repeat scroll 0 0 transparent!important;
+	padding:4px!important;
+	
+}
+
+#fotomotoWidget .fm-popover .fm-popover-list h6{
+	font-size:11px!important;
+	color:#ccc!important;
+	margin:0!important;
+	padding:0px 0 2px 0!important;
+}
+
+#fotomotoWidget .fm-popover .fm-popover-list a.fm-popover-list-item{
+	display:block;
+	padding:8px!important;
+	color:#444!important;
+	font-size:12px!important;
+	font-weight:bold!important;
+	background:#fff;
+	border-bottom:1px solid #ddd;
+}
+
+#fotomotoWidget .fm-popover .fm-popover-list a.fm-popover-list-item:hover{
+	background: #ddd;
+	background: -moz-linear-gradient(center top , #efefef, #dddddd) repeat scroll 0 0 transparent;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#efefef), to(#dddddd));
+	background: -moz-linear-gradient(center top , #efefef, #dddddd) repeat scroll 0 0 transparent;
+}
+
+#fotomotoWidget .fm-popover .fm-popover-list a.fm-popover-list-item.fm-disabled,
+#fotomotoWidget .fm-popover .fm-popover-list a.fm-popover-list-item.fm-disabled span,
+#fotomotoWidget .fm-popover .fm-popover-list a.fm-popover-list-item.fm-disabled:hover{
+	cursor:default!important;
+	color:#ccc!important;
+	background:#fff;
+}
+
+#fotomotoWidget .fm-popover .fm-popover-list a.fm-popover-list-item span{
+	font-size:10px!important;
+	display:block!important;
+	margin:0px 0 0!important;
+	font-weight:normal!important;
+	color:#777!important;	
+}
+
+#fotomotoWidget .fm-popover .fm-popover-list a.fm-popover-list-item.fm-first{
+	-moz-border-radius:4px 4px 0 0!important;
+	-webkit-border-radius:4px 4px 0 0!important;
+	border-radius:4px 4px 0 0!important;
+}
+
+#fotomotoWidget .fm-popover .fm-popover-list a.fm-popover-list-item.fm-last{
+	-moz-border-radius:0px 0px 4px 4px!important;
+	-webkit-border-radius:0px 0px 4px 4px!important;
+	border-radius:0px 0px 4px 4px!important;
+	border:none;
+}
+#fotomotoWidget .fm-popover .fm-popover-list a.fm-popover-list-item.fm-selected{
+	text-shadow:0px 1px 0px #333;
+}
+#fotomotoWidget .fm-popover .fm-popover-list a.fm-popover-list-item.fm-selected span{
+	color:#F6BEA8!important;
+	text-shadow:none!important;
+}
+
+#fotomotoWidget .fm-popover .fm-popover-tail{
+	display:block!important;
+	width:24px!important;
+	height:12px!important;
+	background:url(/assets/widget_sprite.png) -15px -30px no-repeat!important;
+	position:absolute!important;
+	top:100%!important;
+	left:10px!important;
+}
+
+
+#fotomotoWidget .fm-segmented-control{
+	-moz-border-radius:5px!important;
+	-webkit-border-radius:5px!important;
+	border-radius:5px!important;
+	height:26px!important;
+	border-top:1px solid #ccc!important;
+	border-left:1px solid #ccc!important;
+	border-right:1px solid #ccc!important;
+	border-bottom:1px solid #fff!important;
+	line-height:26px!important;
+	background-color: #CBCBCB;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#CBCBCB));
+	background-image: -webkit-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: -moz-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: -ms-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: -o-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: linear-gradient(top, #EEEEEE, #CBCBCB);
+	-moz-box-shadow:0px 1px 0px #fff inset!important;
+	-webkit-box-shadow:0px 1px 0px #fff inset!important;
+	box-shadow:0px 1px 0px #fff inset!important;
+	position:relative!important;
+	font-size:12px!important;
+	font-weight:bold!important;
+	margin:5px 0 0!important;
+}
+
+#fotomotoWidget .fm-segmented-control.fm-small{
+	line-height:20px!important;
+	height:20px!important;
+}
+
+#fotomotoWidget .fm-segmented-control.fm-has-icons{
+	height:66px!important;
+}
+
+#fotomotoWidget .fm-segmented-control .fm-first{
+	-moz-border-radius:5px 0 0 5px!important;
+	-webkit-border-radius:5px 0 0 5px!important;
+	border-radius:5px 0 0 5px!important;
+	float:left!important;
+}
+
+#fotomotoWidget .fm-segmented-control .fm-last{
+	-moz-border-radius:0 5px 5px 0!important;
+	-webkit-border-radius:0 5px 5px 0!important;
+	border-radius:0 5px 5px 0!important;
+	float:right!important;
+	
+}
+
+#fotomotoWidget .fm-segmented-control a{
+	color:#555!important;
+	text-shadow:0px 1px 0px #fff!important;
+	height:26px!important;
+	line-height:26px!important;
+	text-align:center!important;
+}
+
+
+#fotomotoWidget .fm-segmented-control.fm-small a{
+	height:20px!important;
+	line-height:20px!important;
+	font-size:10px!important;
+	
+}
+
+#fotomotoWidget .fm-segmented-control.fm-has-icons a{
+	color:#555!important;
+	text-shadow:0px 1px 0px #fff!important;
+	height:66px!important;
+	line-height:10px!important;
+	text-align:center!important;
+	
+}
+
+#fotomotoWidget .fm-segmented-control.fm-has-icons a.fm-selected{
+	color:#fff!important;
+	text-shadow:0px 1px 0px #000!important;
+}
+
+#fotomotoWidget .fm-segmented-control.fm-has-icons a img{
+	display:block!important;
+	float:none!important;
+}
+
+#fotomotoWidget  .fm-options-section .fm-data{
+	display:block!important;
+	margin:3px 0 0!important;
+	color:#666!important;
+	text-shadow:0px 1px 0px #fff!important;
+	font-size:12px!important;
+	font-weight:bold!important;
+}
+#fotomotoWidget .fm-segmented-control a:hover{
+	background-color: #bababa;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#bababa));
+	background-image: -webkit-linear-gradient(top, #dddddd, #bababa);
+	background-image: -moz-linear-gradient(top, #dddddd, #bababa);
+	background-image: -ms-linear-gradient(top, #dddddd, #bababa);
+	background-image: -o-linear-gradient(top, #dddddd, #bababa);
+	background-image: linear-gradient(top, #dddddd, #bababa);
+}
+
+#fotomotoWidget .fm-segmented-control a.fm-selected{
+	color:#fff!important;
+	text-shadow:0px 1px 0px #000!important;
+	background-color: #555555;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#555555), to(#888888));
+	background-image: -webkit-linear-gradient(top, #555555, #888888);
+	background-image: -moz-linear-gradient(top, #555555, #888888);
+	background-image: -ms-linear-gradient(top, #555555, #888888);
+	background-image: -o-linear-gradient(top, #555555, #888888);
+	background-image: linear-gradient(top, #555555, #888888);
+	-moz-box-shadow:0px 4px 10px #333 inset!important;
+	-webkit-box-shadow:0px 4px 10px #333 inset!important;
+	box-shadow:0px 4px 10px #333 inset!important;
+	text-align:center!important;
+}
+
+#fotomotoWidget .fm-segmented-control a.fm-disabled,
+#fotomotoWidget .fm-segmented-control a.fm-disabled:hover{
+	cursor:default!important;
+	color:#999!important;
+	background-color: #CBCBCB;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#CBCBCB));
+	background-image: -webkit-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: -moz-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: -ms-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: -o-linear-gradient(top, #EEEEEE, #CBCBCB);
+	background-image: linear-gradient(top, #EEEEEE, #CBCBCB);
+}
+
+#fotomotoWidget .fm-segmented-control.fm-two-segments a{
+	width:50%!important;
+}
+
+
+#fotomotoWidget .fm-segmented-control.fm-three-segments a{
+	width:33.333%!important;
+}
+
+#fotomotoWidget .fm-segmented-control.fm-three-segments.fm-has-icons a img{
+	display:block!important;
+	float:none!important;
+	margin: 0 0 0 12px!important;
+}
+
+#fotomotoWidget .fm-segmented-control.fm-two-segments.fm-has-icons a img{
+	margin: 0 0 0 34px!important;
+}
+
+#fotomotoWidget .fm-options-list a{
+	display:block;
+	margin: 3px 0!important;
+	background-color: #CBCBCB!important;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#CBCBCB))!important;
+	background-image: -webkit-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: -moz-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: -ms-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: -o-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	-moz-border-radius:5px!important;
+	-webkit-border-radius:5px!important;
+	border-radius:5px!important;
+	height:26px!important;
+	border-top:1px solid #ccc!important;
+	border-left:1px solid #ccc!important;
+	border-right:1px solid #ccc!important;
+	border-bottom:1px solid #fff!important;
+	line-height:26px!important;
+	-moz-box-shadow:0px 1px 0px #fff inset!important;
+	-webkit-box-shadow:0px 1px 0px #fff inset!important;
+	box-shadow:0px 1px 0px #fff inset!important;
+	position:relative!important;
+	font-size:12px!important;
+	font-weight:bold!important;
+	margin:5px 0 0!important;
+	color:#555!important;
+	text-shadow:0px 1px 0px #fff!important;
+	padding:0 10px!important;
+	
+}
+
+
+#fotomotoWidget .fm-options-list a label{
+	color:#555!important;
+}
+
+#fotomotoWidget .fm-options-list.fm-chunky {
+	margin-top:5px!important;
+}
+
+#fotomotoWidget .fm-options-list.fm-chunky a{
+	width:56px!important;
+	height:65px!important;
+	float:left!important;
+	margin:0 3px 3px 0!important;
+	line-height: 8px!important;
+	padding:0 8px!important;
+	text-align:center!important;
+}
+#fotomotoWidget .fm-options-list.fm-chunky a.fm-last-in-row{
+	margin-right:0!important;
+}
+#fotomotoWidget .fm-options-list.fm-chunky a img{
+	float:none!important;
+	display:block!important;
+	margin:0 0 0 2px!important;
+}
+
+#fotomotoWidget .fm-options-list a.fm-disabled,
+#fotomotoWidget .fm-options-list a.fm-disabled:hover{
+	cursor:default!important;
+	color:#999!important;
+	background-color: #CBCBCB;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#CBCBCB))!important;
+	background-image: -webkit-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: -moz-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: -ms-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: -o-linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+	background-image: linear-gradient(top, #EEEEEE, #CBCBCB)!important;
+}
+#fotomotoWidget .fm-has-editions .fm-options-list a{
+	margin-right:45px!important;
+}
+
+#fotomotoWidget .fm-has-editions .fm-options-list a .fm-option-list-edition{
+	position:absolute!important;
+	top:0!important;
+	left:100%!important;
+	margin-left:0px!important;
+	font-size:9px!important;
+	width:61px!important;
+	display:block!important;
+	text-align:center!important;
+	text-shadow:0px 1px 0px #fff!important;
+	color:#888!important;
+	font-weight:normal!important;
+}
+
+
+#fotomotoWidget .fm-options-list a:hover{
+	background-color: #bababa!important;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#bababa))!important;
+	background-image: -webkit-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: -moz-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: -ms-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: -o-linear-gradient(top, #dddddd, #bababa)!important;
+	background-image: linear-gradient(top, #dddddd, #bababa)!important;
+	
+}
+
+#fotomotoWidget .fm-options-list a.fm-selected{
+	color:#fff!important;
+	text-shadow:0px 1px 0px #000!important;
+	background-color: #555555!important;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#555555), to(#888888))!important;
+	background-image: -webkit-linear-gradient(top, #555555, #888888)!important;
+	background-image: -moz-linear-gradient(top, #555555, #888888)!important;
+	background-image: -ms-linear-gradient(top, #555555, #888888)!important;
+	background-image: -o-linear-gradient(top, #555555, #888888)!important;
+	background-image: linear-gradient(top, #555555, #888888)!important;
+	-moz-box-shadow:0px 4px 10px #333 inset!important;
+	-webkit-box-shadow:0px 4px 10px #333 inset!important;
+	box-shadow:0px 4px 10px #333 inset!important;
+}
+#fotomotoWidget .fm-options-list a.fm-selected label{
+	color:#fff!important;
+}
+
+#fotomotoWidget .fm-options-list a .fm-option-list-price{
+	display:block!important;
+	float:right!important;
+	font-size:10px!important;
+	color:#888!important;
+}
+
+#fotomotoWidget .fm-options-list a.fm-selected .fm-option-list-price{
+	color:#fff!important;
+}
+
+
+#fotomotoWidget .fm-options-list .fm-more img.fm-more-icon{
+	float:right!important;
+	margin:10px 0px 0 0!important;
+	margin-left:4px!important;
+}
+
+
+
+
+#fotomotoWidget .fm-current-selection-price-wrapper{
+	position:absolute!important;
+	bottom:0px!important;
+	left:0!important;
+	width:100%!important;
+	height:35px!important;
+	line-height:35px!important;
+	overflow:hidden!important;
+	font-size:11px!important;
+	color:#666666!important;
+	background-color: #dddddd;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#ffffff));
+	background-image: -webkit-linear-gradient(top, #dddddd, #ffffff);
+	background-image: -moz-linear-gradient(top, #dddddd, #ffffff);
+	background-image: -ms-linear-gradient(top, #dddddd, #ffffff);
+	background-image: -o-linear-gradient(top, #dddddd, #ffffff);
+	background-image: linear-gradient(top, #dddddd, #ffffff);
+	z-index:1;
+	width:261px!important;
+	-moz-box-shadow:0px 0px 3px #777!important;
+	-webkit-box-shadow:0px 0px 3px #777!important;
+	box-shadow:0px 0px 3px #777!important;
+	border-top:1px solid #fff!important;
+}
+
+#fotomotoWidget .fm-current-selection-price-wrapper .fm-current-selection-price{
+	display:block!important;
+	float:right!important;
+	font-size:18px!important;
+	margin:0px 10px 0 0!important;
+	font-weight:bold!important;
+}
+
+#fotomotoWidget .fm-current-selection-price-wrapper .fm-label{
+	margin-left:10px!important;
+	float: left;
+}
+
+#fotomotoWidget .fm-preview{
+	width:589px!important;
+	float:left!important;
+	position:relative!important;
+	height:439px!important;
+	float:left!important;
+	margin:0!important;
+}
+
+#fotomotoWidget .fm-preview .fm-preview-image-container{
+	display: table-cell!important;
+	vertical-align:middle!important;
+	text-align:center!important;
+	float:none!important;
+	width:589px!important;
+	height:438px!important;
+	margin:0!important;
+}
+
+#fotomotoWidget .fm-preview .fm-preview-image-wrapper{
+	width:589px!important;
+}
+
+
+#fotomotoWidget .fm-preview  .fm-preview-image-wrapper,
+#fotomotoWidget .fm-preview   .fm-preview-image{
+	position:relative!important;
+}
+
+#fotomotoWidget  .fm-preview  .fm-preview-image-wrapper .fm-mask{
+	display:block!important;
+	position:absolute!important;
+	background:rgba(255,255,255,0.80)!important;
+	width:100%!important;
+	height:100%!important;
+	top:0!important;
+	left:0!important;
+	z-index:2!important;
+}
+	
+#fotomotoWidget .fm-preview img{
+	max-width:569px!important;
+	max-height:406px!important;
+	display:inline;
+}
+
+#fotomotoWidget .fm-preview .fm-crop-window{
+	
+	position:absolute!important;
+	 overflow:hidden!important;
+	 z-index:10!important;
+}
+
+#fotomotoWidget .fm-preview .fm-crop-window .fm-top,
+#fotomotoWidget .fm-preview .fm-crop-window .fm-left,
+#fotomotoWidget .fm-preview .fm-crop-window .fm-right,
+#fotomotoWidget .fm-preview .fm-crop-window .fm-bottom{
+	position:absolute!important;
+	z-index:15!important;
+	float:none!important;
+}
+#fotomotoWidget .fm-preview .fm-crop-window .fm-top{
+	width:100%!important;
+	height:1px!important;
+	background:url(/assets/lasso-h.gif) 0 0 repeat!important;
+	top:0!important;
+	left:0!important;
+}
+#fotomotoWidget .fm-preview .fm-crop-window .fm-bottom{
+	width:100%!important;
+	height:1px!important;
+	background:url(/assets/lasso-h.gif) 0 0 repeat!important;
+	bottom:0!important;
+	left:0!important;
+}
+#fotomotoWidget .fm-preview .fm-crop-window .fm-left{
+	height:100%!important;
+	width:1px!important;
+	background:url(/assets/lasso-v.gif) 0 0 repeat!important;
+	top:0!important;
+	left:0!important;
+}
+#fotomotoWidget .fm-preview .fm-crop-window .fm-right{
+	height:100%!important;
+	width:1px!important;
+	background:url(/assets/lasso-v.gif) 0 0 repeat!important;
+	top:0!important;
+	right:0!important;
+}
+
+
+
+#fotomotoWidget .fm-preview a.fm-edit-crop{
+	
+	position:absolute!important;
+	width:100px!important;
+	height:100px!important;
+	left:50%!important;
+	top:50%!important;
+	margin:-50px 0 0 -50px!important;
+	background:rgba(0,0,0,0.5)!important;
+	color:#fff!important;
+	-moz-border-radius:10px!important;
+	-webkit-border-radius:10px!important;
+	border-radius:10px!important;
+	-moz-box-shadow:0px 0px 10px #fff!important;
+	-webkit-box-shadow:0px 0px 10px #fff!important;
+	box-shadow:0px 0px 10px #fff!important;
+	z-index:20!important;
+	font-size:10px!important;
+	text-align:center!important;
+	display:none;
+}
+
+#fotomotoWidget .fm-preview a.fm-edit-crop:hover{
+	background:rgba(0,0,0,0.8)!important;
+}
+
+#fotomotoWidget .fm-preview a.fm-edit-crop img.fm-crop-icon{
+	margin:30px 0 8px 38px!important;
+}
+
+
+
+
+/* ==================== cropbox  =============================== */
+/* ----------------------------------------------------------- */
+
+#fotomotoWidget .fm-crop-box-container{
+	position:absolute!important;
+	top:0!important;
+	left:0!important;
+	width:100%!important;
+	height:100%!important;
+	background:url(/assets/bg_black_checkered.png)!important;
+	z-index:20!important;
+	-moz-border-radius:8px!important;
+	-webkit-border-radius:8px!important;
+	border-radius:8px!important;
+}
+
+#fotomotoWidget .fm-crop-box{
+	position:absolute!important;
+	top:50%!important;
+	left:50%!important;
+	width:700px!important;
+	height:480px!important;
+	background:#fff!important;
+	-moz-box-shadow:0px 0px 20px #444!important;
+	-webkit-box-shadow:0px 0px 20px #444!important;
+	box-shadow:0px 0px 20px #444!important;
+	z-index:21!important;
+	margin:-240px 0 0 -350px!important; 
+	
+	-moz-border-radius:8px!important;
+	-webkit-border-radius:8px!important;
+	border-radius:8px!important;
+}
+
+#fotomotoWidget .fm-crop-box .fm-box-footer{
+	position:absolute!important;
+	bottom:0!important;
+	left:0!important;
+	width:100%!important;
+	height:40px!important;
+	color:#666666!important;
+	background-color: #cacaca;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#cacaca));
+	background-image: -webkit-linear-gradient(top, #efefef, #cacaca);
+	background-image: -moz-linear-gradient(top, #efefef, #cacaca);
+	background-image: -ms-linear-gradient(top, #efefef, #cacaca);
+	background-image: -o-linear-gradient(top, #efefef, #cacaca);
+	background-image: linear-gradient(top, #efefef, #cacaca);
+	text-shadow:0px 1px 0px #fff!important;
+	-moz-border-radius:0 0 8px 8px!important;
+	-webkit-border-radius:0 0 8px 8px!important;
+	border-radius:0 0 8px 8px!important;
+}
+
+#fotomotoWidget .fm-crop-image-container{
+	text-align:center!important;
+	display:table-cell!important;
+	vertical-align:middle!important;
+	width:700px!important;
+	height:440px!important;
+	display:none;
+}
+
+#fotomotoWidget .fm-crop-image-container img{
+	
+	max-width:569px!important;
+	max-height:406px!important;
+}
+
+#fotomotoWidget .fm-crop-box .fm-box-footer a{
+	float:right!important;
+	margin:7px 15px 0 -5px!important;
+}
+
+ .fm-crop-tools{
+
+ }
+ .fm-crop-message{
+	display:block;
+	position:absolute;
+	top:50%!important;
+	left:0!important;
+	margin-top:-6px!important;
+	width:100%!important;
+	font-size:14px!important;
+	font-weight:bold!important;
+	color:#fff!important;
+	text-shadow:0px 0px 8px #000!important;
+	font-family:Helvetica, Arial, sans-serif!important;
+	z-index:2!important;
+	text-align:center!important;
+}
+ .fm-crop-message-shadow{
+	display:block;
+	position:absolute!important;
+	top:50%!important;
+	left:0!important;
+	margin-top:-5px!important;
+	font-size:14px!important;
+	width:100%!important;
+	font-weight:bold!important;
+	color:#00!important;
+	text-shadow:0px 0px 8px #000!important;
+	font-family:Helvetica, Arial, sans-serif!important;
+	z-index:1!important;
+	text-align:center!important;
+}
+
+
+
+
+/* ==================== ecard  =============================== */
+/* ----------------------------------------------------------- */
+
+#fotomotoWidget .fm-options.fm-ecard{
+	background: url(/assets/bg-options.png) 0 0 repeat-x!important;
+}
+
+#fotomotoWidget .fm-ecard-envelope{
+	background:#f8f8f8 url(/assets/bg_letter.png)!important;
+	margin:30px!important;
+	-moz-border-radius:4px!important;
+	-webkit-border-radius:4px!important;
+	border-radius:4px!important;
+	-moz-box-shadow:0px 0px 8px #999!important;
+	-webkit-box-shadow:0px 0px 8px #999!important;
+	box-shadow:0px 0px 8px #999!important;
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-ecard-form {
+	margin: 8px!important;
+	height:268px!important;
+	font-size:12px!important;
+	-moz-border-radius:0 0 4px 4px!important;
+	-webkit-border-radius:0 0 4px 4px!important;;
+	border-radius:0 0 4px 4px!important;
+	background:#f8f8f8 url(/assets/ricepaper2.jpg)!important;
+	padding: 20px!important;
+	position: relative!important;
+}
+
+#fotomotoWidget .fm-ecard-form label{
+	display:block!important;
+	text-shadow:0px 1px 0px #fff!important;
+	color:#666!important;
+	font-size:12px!important;
+	font-weight:bold!important;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif!important;
+	clear:both!important;
+	margin:0 0 5px 0!important;
+	float:none!important;
+	text-align:left!important;
+	width:auto!important;
+}
+#fotomotoWidget .fm-ecard-form input[type=text] {
+	display: block!important;
+	width: 225px!important;
+	margin-bottom: 10px!important;
+	margin-right:5px!important;
+	font: 12px 'Helvetica Neue', Helvetica, Arial, sans-serif!important;
+	color: #333!important;
+	float:left!important;
+	clear:none!important;
+}
+
+#fotomotoWidget .fm-ecard-form textarea {
+	width: 470px!important;
+	height: 130px!important;
+	overflow: auto!important;
+	color:#333!important;
+}
+
+#fotomotoWidget .fm-ecard-form .fm-chars-left{
+	padding:5px 0 0!important;
+	margin:0 0 0 244px!important;
+	font-size:11px!important;
+	font-weight:normal!important;
+	color:#999!important;
+}
+#fotomotoWidget .fm-ecard-form .fm-comma-separated{
+	padding:5px 0 0!important;
+	margin:0 0 0 290px!important;
+	font-size:11px!important;
+	font-weight:normal!important;
+	color:#999!important;
+}
+
+/* Placeholder style */
+#fotomotoWidget .fm-ecard-form  ::-webkit-input-placeholder {
+	color: #888!important;
+}
+
+#fotomotoWidget .fm-ecard-form  :-moz-placeholder {
+	color: #888!important;
+}
+
+#fotomotoWidget .fm-ecard .fm-stamp{
+	position:absolute!important;
+	width:100px!important;
+	height:116px!important;
+	top:20px!important;
+	right:40px!important;
+}
+
+#fotomotoWidget .fm-stamp .fm-stamp-image{
+	background:url(/assets/bg_stamp.png) 0 0 no-repeat!important;
+	z-index:10!important;
+	position:absolute!important;
+	top:0!important;
+	left:0!important;
+	display:block!important;
+	width:100px!important;
+	height:116px!important;
+}
+
+#fotomotoWidget .fm-stamp .fm-stamp-image-wrapper{
+	overflow:hidden!important;
+	width:100px!important;
+	height:116px!important;
+	position:relative!important;
+}
+
+
+#fotomotoWidget .fm-stamp .fm-stamp-cancel{
+	position:absolute!important;
+	top:30px!important;
+	left:-115px!important;
+	height:91px!important;
+	width:148px!important;
+	display:block!important;
+	background:url(/assets/bg_fm_stamp.png) 0 0 no-repeat!important;
+	z-index:11!important;
+}
+
+#fotomotoWidget .fm-stamp img{
+	position:absolute!important;
+	top:0!important;
+	left:0!important;
+	z-index:5!important;
+}
+
+
+
+#fotomotoWidget  .fm-ecard .fm-delivery-date{
+	position:absolute!important;
+	bottom:22px!important;
+	right:15px!important;
+	background:url(/assets/bg_mail_label.png) 0 0 no-repeat;
+	width:165px!important;
+	height:31px!important;
+	color:#aeb3d3!important;
+	text-align:center!important;
+	padding:40px 0 0!important;
+	font-size:10px!important;
+	text-align:center!important;
+	
+}
+
+#fotomotoWidget  .fm-ecard .fm-delivery-date span{
+	margin-left:20px!important;
+}
+
+
+
+
+#fotomotoWidget .fm-share-options{
+	
+	width:100%;
+	border-top:1px solid #ddd;
+	font-family:Helvetica, Arial, sans-serif;
+	padding:5px 0 0;
+	
+}
+#fotomotoWidget .fm-share-options .fm-line{
+	overflow:hidden;
+	border-top:1px solid #fff;
+	padding-top:7px;
+}
+
+#fotomotoWidget .fm-share-options p{
+	margin-left:10px; margin-bottom:10px;
+	color:#888; padding-right:10px;
+	float:left;
+	height:20px;
+	line-height:22px
+	
+}
+
+#fotomotoWidget .fm-share-options a{
+	display:block;
+	float:left;
+	padding:0px 0 0 0px!important;
+	height:26px!important;
+	text-align:left!important;
+	margin-left:2px!important;
+	background-image:url(/assets/share_subtypes.png);
+	background-repeat:no-repeat;
+	margin-right:10px;
+	color:#444;
+	height:18px;
+	text-indent:-9999px!important;
+	width:72px;
+	height:28px;
+}
+
+#fotomotoWidget .fm-share-options a:hover{
+	color:#000;
+}
+
+#fotomotoWidget .fm-share-options a#fm_facebook,
+#fotomotoWidget .fm-share-options a#fm_facebook:hover{
+	background-position:-36px -119px;
+}
+
+#fotomotoWidget .fm-share-options a#fm_twitter,
+#fotomotoWidget .fm-share-options a#fm_twitter:hover{
+	background-position:-36px -170px;
+}
+
+
+#fotomotoWidget .fm-share-options a#fm_gplus,
+#fotomotoWidget .fm-share-options a#fm_gplus:hover{
+	background-position:-36px -227px;
+}
+
+#fotomotoWidget .fm-share-options a#fm_ecard,
+#fotomotoWidget .fm-share-options a#fm_ecard:hover{
+	background-position:-36px -284px;
+}
+
+#fotomotoWidget #datepicker{
+	width:auto!important;
+	background:transparent!important;
+	border:none!important;
+	display:inline!important;
+	color:#fff!important;
+	max-width:70px!important;
+	padding:0 3px!important;
+	margin:0 0 0 5px!important;
+	cursor:pointer!important;
+}
+#fotomotoWidget #datepicker:hover{
+	text-decoration:underline!important;
+}
+
+
+
+/* ==================== posters ========================= */
+/* ----------------------------------------------------------- */
+
+#fotomotoWidget .fm-posters .fm-poster-type .fm-coming-soon{
+	position:relative!important;
+	top:-2px!important;
+}
+
+#fotomotoWidget .fm-custom-size{
+	padding: 0px 5px 5px 15px!important;
+}
+#fotomotoWidget .fm-custom-size .fm-input-fields {
+	position: relative;
+	color: #999;
+	margin-left:3px!important;
+	text-shadow:none!important;
+	font-weight:normal!important;
+	padding-right:25px!important;
+}
+
+
+#fotomotoWidget .fm-custom-size input {
+	width: 42px;
+	border: 1px solid #CCC;
+	font-weight:normal!important;
+	height:18px!important;
+	line-height:18px!important;
+	margin:2px!important;
+}
+
+#fotomotoWidget .fm-selected .fm-custom-size  input {
+	background:#fff!important;
+}
+
+
+#fotomotoWidget .fm-selected .fm-custom-size .fm-input-fields{
+	color:#fff!important;
+}
+
+
+#fotomotoWidget .fm-custom-size .fm-input-fields .fm-lock{
+	position:absolute!important;
+	top:4px!important;
+	right:2px!important;
+	width:19px!important;
+	height:19px!important;
+	background:url(/assets/widget_sprite.png) 0 -241px no-repeat!important;
+	z-index:10!important;
+	cursor:pointer!important;
+	display:none!important;
+}
+#fotomotoWidget .fm-custom-size .fm-input-fields .fm-lock.fm-is-locked{
+	background:url(/assets/widget_sprite.png) 0 -218px no-repeat!important;
+}
+
+#fotomotoWidget .fm-selected .fm-custom-size .fm-input-fields .fm-lock{
+	display:block!important;
+}
+
+.fm-peel-corner{
+	position:fixed!important;
+	width:40px!important;
+	height:40px!important;
+	background:url(/assets/bg_peel.png) 0 0 no-repeat!important;
+	z-index:100000000000!important;
+	display:block!important;
+}
+
+#fotomotoWidget .fm-posters .fm-preview{
+	background: url(/assets/bg_brick_pattern.gif) 50% 50%;
+}
+
+
+
+/* ==================== cards  =============================== */
+/* ----------------------------------------------------------- */
+
+#fotomotoWidget .fm-card-type .fm-last{
+	float:none!important;
+}
+
+#fotomotoWidget .fm-cards .fm-preview{
+	background:#e5e5e5 url(/assets/bg-card-preview.png) 0 0px repeat-x!important;
+	overflow:hidden!important;
+}
+
+#fotomotoWidget .fm-cards .fm-preview img {
+	max-width: none!important;
+	max-height: none!important;
+	cursor:move;
+}
+
+#fotomotoWidget .fm-cards .fm-preview .fm-preview-image-container{
+	vertical-align:bottom!important;
+}
+
+#fotomotoWidget .fm-cards .fm-card-type .fm-coming-soon{
+	position:absolute!important;
+	bottom:21px!important;
+	left:22px!important;
+}
+
+.fm-card-shadow-left{
+	background:url(/assets/cardshadow.png) 0 0 no-repeat;
+	width:50px!important;
+	height:29px!important;
+	margin-left:-50px!important;
+	position:absolute!important;
+	bottom:0;
+	left:0;
+}
+
+
+.fm-card-shadow-right{
+	background:url(/assets/cardshadow.png) 100% 0 no-repeat;
+	width:40px!important;
+	height:29px!important;
+	margin-right:-40px!important;
+	position:absolute!important;
+	bottom:0;
+	right:0;
+}
+
+#fotomotoWidget .fm-preview .fm-preview-tools{
+	position:absolute!important;
+	bottom:0px!important;
+	width:100%!important;
+	left:0px!important;
+	height:40px!important;
+	margin:0!important;
+	padding:0!important;
+	z-index:10000!important;
+}
+
+#fotomotoWidget .fm-preview .fm-preview-tools .fm-rotate-card{
+	margin:11px 0 0 10px!important;
+}
+
+#fotomotoWidget .fm-preview .fm-preview-tools .fm-rotate-card img{
+	position:relative!important;
+	top:3px!important;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools{
+	margin: 0!important;
+	display:none;
+	position:absolute!important;
+	bottom:8px!important;
+	right:10px!important;
+	z-index:10000;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-font-alignment{
+	margin:0!important;
+}
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-segmented-control{
+	width:78px!important;
+	overflow:hidden!important;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-segmented-control a{
+	float:left!important;
+	width:26px!important;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-segmented-control a.fm-align-middle{
+	width:26px!important;
+}
+#fotomotoWidget .fm-preview .fm-font-tools .fm-segmented-control a.fm-align-right{
+	float:none!important;
+}
+
+#fotomotoWidget .fm-preview .fm-font-tools .fm-segmented-control a img{
+	position:relative!important;
+	top:1px!important;
+}
+
+#fotomotoWidget .fm-preview .fm-font-tools li.fm-font-size  .fm-option.fm-current-font-size{
+	padding-left:5px!important;
+	margin-left:5px!important;
+}
+#fotomotoWidget .fm-preview .fm-font-tools li.fm-font-size a.fm-option span.fm-arrows{
+	margin-left:4px!important;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-font li{
+	float:left!important;
+	margin:0 10px 0 0!important;
+	height:21px!important;
+	line-height:21px!important;
+	font-size:10px!important;
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-font li span.fm-label{
+	color:#999!important;
+	margin-right:0px!important;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-font li a.fm-option{
+	min-width:36px!important;
+	text-align:center!important;
+	font-weight:bold;
+	color:#666!important;
+	text-shadow:0px 1px 0px #fff!important;
+	background:#fff!important;
+	padding:0 4px!important;
+	-moz-border-radius:4px!important;
+	-webkit-border-radius:4px!important;
+	border-radius:4px!important;
+	-moz-box-shadow:0px 0px 2px #888!important;
+	-webkit-box-shadow:0px 0px 2px #888!important;
+	box-shadow:0px 0px 2px #888!important;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-font a.fm-option span.fm-arrows,
+#fotomotoWidget .fm-preview  a:hover span.fm-arrows{
+	width:4px!important;
+	height:8px!important;
+	background-color:#fff!important;
+	background-image:url(/assets/widget_sprite.png)!important;
+	background-position:-993px -622px!important;
+	background-repeat:no-repeat!important;
+	float:right!important;
+	margin:5px 0 0 2px!important;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-font li .fm-option-list{
+	position:absolute;
+	bottom:100%;
+	right:0px;
+	-moz-border-radius: 6px!important;
+	-webkit-border-radius: 6px!important;
+	border-radius: 6px!important;
+	background: #EFEFEF!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #CCC) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#EFEFEF), to(#CCC))!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #CCC) repeat scroll 0 0 transparent!important;
+	white-space: nowrap!important;
+	-mox-box-shadow: 0px 1px 2px #666;
+	-webkit-box-shadow: 0px 1px 2px #666;
+	-box-shadow: 0px 1px 2px #666;
+	z-index: 5!important;
+	padding:25px 5px 0!important;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-font li .fm-option-list li{
+	display:block!important;
+	float:none!important;
+}
+#fotomotoWidget .fm-preview .fm-font-tools .fm-font-family  .fm-option-list{
+	width:105px!important;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-font-family  .fm-option-list li a{
+	height:20px!important;
+	text-indent: -1000px !important;
+  	margin: 0 !important;
+  	padding: 0 !important;
+  	width:100px!important;
+	display:block!important;
+}
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-font-size  .fm-option-list li{
+	
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-font-size  .fm-option-list li a{
+	color:#666!important;
+	font-weight:bold!important;
+}
+#fotomotoWidget .fm-preview  .fm-font-tools .fm-font-size  .fm-option-list li.fm-selected a{
+	color:#fff!important;
+	}
+
+#fotomotoWidget .fm-preview  .fm-font-tools  .fm-option-list li{
+	-moz-border-radius:10px!important;
+	-webkit-border-radius:10px!important;
+	border-radius:10px!important;
+	height:20px!important;
+	line-height:20px!important;
+	padding:0 5px!important;
+	margin:2px 0px!important;
+}
+
+
+#fotomotoWidget .fm-preview  .fm-font-tools  .fm-option-list li:hover{
+	background:#ccc!important;
+	background: -moz-linear-gradient(center top , #aaa, #ccc) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#aaa), to(#ccc))!important;
+	background: -moz-linear-gradient(center top , #ddd, #aaa) repeat scroll 0 0 transparent!important;
+}
+#fotomotoWidget .fm-preview  .fm-font-tools   .fm-option-list li.fm-selected{
+	color:#fff!important;
+	background:#333!important;
+	background: -moz-linear-gradient(center top , #444, #111) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#111))!important;
+	background: -moz-linear-gradient(center top , #444, #111) repeat scroll 0 0 transparent!important;
+}
+
+#fotomotoWidget .fm-preview .fm-font-tools .fm-option-list li.fm-close{
+	position:absolute!important;
+	top:5px!important;
+	right:5px!important;
+	width:22px!important;
+	height:22px!important;
+	padding:0!important;
+	margin:0!important;
+}
+#fotomotoWidget .fm-preview  .fm-font-tools  .fm-option-list li.fm-close:hover{
+	background:none!important;
+}
+
+#fotomotoWidget .fm-preview  .fm-font-tools  .fm-option-list li a.fm-close{
+	width: 16px!important;
+	height: 16px!important;
+	background: url(/assets/widget_sprite.png) 50% -110px no-repeat!important;
+	float: right!important;
+	margin:0 !important;
+	-moz-border-radius:8px!important;
+	-webkit-border-radius:8px!important;
+	border-radius:8px!important;	
+}
+
+#fotomotoWidget .fm-preview .fm-font-tools  .fm-option-list li a.fm-close:hover{
+	background:#444 url(/assets/widget_sprite.png) 50% -133px no-repeat!important;
+}
+
+
+
+#fotomotoWidget .fm-cards .fm-card-inside-outside{
+	width:120px!important;
+	margin:11px 0 0 10px!important;
+}
+
+
+#fotomotoWidget textarea.fm-personal-message{
+	height:180px!important;
+	width:220px!important;
+	margin:10px 0 0!important;
+}
+
+#fotomotoWidget .fm-cards .fm-add-message{
+	text-align:center!important;
+}
+
+#fotomotoWidget .fm-cards .fm-inside-panel{
+	display:none;
+}
+
+/* standard card - portrait*/
+/*outside*/
+#fotomotoWidget .fm-standard.fm-portrait .fm-preview-image-wrapper{
+	width:260px!important;
+	height:364px!important;
+	margin-bottom: 53px!important;
+}
+/* inside standard flat and square flat*/
+#fotomotoWidget .fm-standard.fm-portrait.fm-flat .fm-inside-panel .fm-preview-image-fixed-crop-frame{
+	background:#fff url(/assets/bg-standard-flat-inside-portrait.png) 100% 50% no-repeat!important;
+}
+
+#fotomotoWidget .fm-preview-image-fixed-crop-frame .fm-crop-message,
+#fotomotoWidget  .fm-preview-image-fixed-crop-frame .fm-crop-message-shadow{
+	display:none;
+}
+
+/* standard card - landscape*/
+/*outside*/
+#fotomotoWidget .fm-standard.fm-landscape .fm-preview-image-wrapper{
+	width:509px!important;
+	height:364px!important;
+	margin-bottom: 53px!important;
+}
+/* inside standard flat*/
+#fotomotoWidget .fm-standard.fm-landscape.fm-flat .fm-inside-panel .fm-preview-image-fixed-crop-frame{
+	background:#fff url(/assets/bg-standard-flat-inside.png) 0 0 no-repeat!important;
+}
+
+/* square card - portrait & landscape*/
+/* outside */
+#fotomotoWidget .fm-square .fm-preview-image-wrapper{
+	width:364px!important;
+	height:364px!important;
+	margin-bottom: 53px!important;
+}
+/* inside */
+#fotomotoWidget .fm-square.fm-flat .fm-inside-panel .fm-preview-image-fixed-crop-frame{
+	background:#fff url(/assets/bg-minicard-inside.png) 100% 100% no-repeat!important;
+}
+#fotomotoWidget .fm-photocard.fm-landscape.fm-flat .fm-inside-panel .fm-preview-image-fixed-crop-frame{
+	background:#fff url(/assets/bg-photocard-flat-inside.png) 100% 100% no-repeat!important;
+}
+#fotomotoWidget .fm-photocard.fm-portrait.fm-flat .fm-inside-panel .fm-preview-image-fixed-crop-frame{
+	background:#fff url(/assets/bg-photocard-portrait-flat-inside.png) 100% 100% no-repeat!important;
+}
+
+/* photo card */
+/* outside landscape*/
+#fotomotoWidget .fm-photocard.fm-landscape .fm-preview-image-wrapper{
+	width:520px!important;
+	height:260px!important;
+	margin-bottom: 53px!important;
+}
+/* outside portrait*/
+#fotomotoWidget .fm-photocard.fm-portrait .fm-preview-image-wrapper{
+	width:182px!important;
+	height:364px!important;
+	margin-bottom: 53px!important;
+}
+
+
+/* mini card */
+/* outside landscape*/
+#fotomotoWidget .fm-mini-card.fm-landscape .fm-preview-image-wrapper{
+	width:501px!important;
+	height:364px!important;
+	margin-bottom: 53px!important;
+}
+/* outside portrait*/
+#fotomotoWidget .fm-mini-card.fm-portrait .fm-preview-image-wrapper{
+	width:265px!important;
+	height:364px!important;
+	margin-bottom: 53px!important;
+}
+
+
+#fotomotoWidget .fm-inside-panel .fm-preview-image-fixed-crop-frame{
+	background-color:#fff;
+	position:relative;
+}
+
+#fotomotoWidget   .fm-top-line{
+	position:absolute!important;
+	top:0!important;
+	left:0!important;
+	height:1px!important;
+	width:100%!important;
+	display:block!important;
+	background: url(border-anim-h.gif) repeat-x left top!important;
+	opacity:0.2;
+	 filter: alpha(opacity=20);
+}
+#fotomotoWidget  .fm-bottom-line{
+	position:absolute!important;
+	bottom:0!important;
+	left:0!important;
+	height:1px!important;
+	width:100%!important;
+	display:block!important;
+	background: url(border-anim-h.gif) repeat-x left top!important;
+	opacity:0.2;
+	 filter: alpha(opacity=20);
+}
+#fotomotoWidget  .fm-left-line{
+	position:absolute!important;
+	top:0!important;
+	left:0!important;
+	width:1px!important;
+	height:100%!important;
+	display:block!important;
+	background: url(border-anim-v.gif) repeat-y left top!important;
+	opacity:0.2;
+	 filter: alpha(opacity=20);
+}
+#fotomotoWidget  .fm-right-line{
+	position:absolute!important;
+	top:0!important;
+	right:0!important;
+	width:1px!important;
+	height:100%!important;
+	display:block!important;
+	background: url(border-anim-v.gif) repeat-y left top!important;
+	opacity:0.2;
+	 filter: alpha(opacity=20);
+}
+
+
+/* postcard - landscape */
+/* outside */
+#fotomotoWidget .fm-postcard.fm-landscape .fm-preview-image-wrapper,
+#fotomotoWidget .fm-postcard.fm-portrait .fm-inside-panel .fm-preview-image-wrapper{
+	width:510px!important;
+	height:364px!important;
+	margin-bottom: 53px!important;
+}
+
+/* inside */
+#fotomotoWidget .fm-postcard .fm-inside-panel .fm-preview-image-fixed-crop-frame,
+#fotomotoWidget .fm-postcard .fm-inside-panel .fm-preview-image-fixed-crop-frame{
+	background:#fff url(/assets/bg-postcard-inside.png) 0 0 no-repeat!important;
+}
+
+/* postcard - portrait */
+/* outside */
+#fotomotoWidget .fm-postcard.fm-portrait .fm-preview-image-wrapper{
+	width:260px!important;
+	height:364px!important;
+	margin-bottom: 53px!important;
+}
+
+
+/* card flap  landscape (standard and square) */
+/* outside */
+#fotomotoWidget .fm-landscape .fm-card-flap{
+	width:12px!important;
+	height:332px!important;
+	position:absolute;
+	top:20px;
+	right:100%;
+	background:url(/assets/card-flap-left.png) 0 0 no-repeat;
+}
+/* inside standard */
+#fotomotoWidget .fm-landscape .fm-inside-panel .fm-card-flap{
+	background:url(/assets/card-flap-top-open.png) 0 0 no-repeat;
+	top:auto!important;
+	left:-13px!important;
+	bottom:100%!important;
+	right:auto!important;
+	width:538px!important;
+	height:15px!important;
+}
+/* inside square */
+#fotomotoWidget .fm-landscape.fm-square .fm-inside-panel .fm-card-flap{
+	background:url(/assets/card-flap-top-open-square.png) 0 0 no-repeat;
+	top:auto!important;
+	left:-13px!important;
+	bottom:100%!important;
+	right:auto!important;
+	width:393px!important;
+	height:15px!important;
+}
+/* inside mini */
+#fotomotoWidget .fm-landscape.fm-mini-card .fm-inside-panel .fm-card-flap{
+	background:url(/assets/card-flap-top-open-mini.png) 0 0 no-repeat;
+	top:auto!important;
+	left:-13px!important;
+	bottom:100%!important;
+	right:auto!important;
+	width:538px!important;
+	height:15px!important;
+}
+
+/* card flap portrait   */
+/* outside standard*/
+#fotomotoWidget .fm-portrait .fm-card-flap{
+	width:221px!important;
+	height:14px!important;
+	position:absolute;
+	bottom:100%;
+	left:0;
+	background:url(/assets/card-flap-top.png) 0 0 no-repeat;
+}
+
+/* outside square*/
+#fotomotoWidget .fm-square.fm-portrait .fm-card-flap{
+	width:320px!important;
+	background:url(/assets/card-flap-top-square.png) 0 0 no-repeat;
+}
+
+/* inside  (standard and square) */
+#fotomotoWidget .fm-portrait .fm-inside-panel .fm-card-flap,
+#fotomotoWidget .fm-portrait.fm-square .fm-inside-panel .fm-card-flap{
+	background:url(/assets/card-flap-left-open.png) 0 0 no-repeat;
+	bottom:auto!important;
+	top:-4px!important;
+	right:100%!important;
+	left:auto!important;
+	width:62px!important;
+	height:375px!important;
+}
+
+
+/* postcard or flat cards (standard and square) have no flap */
+#fotomotoWidget .fm-postcard .fm-card-flap,
+#fotomotoWidget .fm-flat .fm-card-flap{
+	width:0!important;
+	height:0!important;
+	display:none!important;
+}
+
+
+#fotomotoWidget .fm-preview-image-wrapper .fm-preview-image-fixed-crop-frame{
+	width:100%;
+	height:100%;
+	overflow:hidden!important;
+}
+
+/* ==================== download =============================== */
+/* ----------------------------------------------------------- */
+
+#fotomotoWidget .fm-help .fm-license{
+	border:none!important;
+	padding:0!important;
+	margin:0!important;
+	width:100%!important;
+}
+
+
+#fotomotoWidget .fm-download .fm-contact-artist{
+	background:#f8f8f8 url(/assets/bg_letter.png)!important;
+	width: 550px!important;
+	height: 400px!important;
+	margin: 15px 0 0 15px!important;
+	box-shadow: 0px 0px 4px #888!important;
+	position:relative!important;
+	padding:8px 0 0!important;
+	display:none;
+}
+
+#fotomotoWidget .fm-download .fm-contact-artist div.fm-message{
+	margin-left:15px!important;
+	color:#555!important;
+}
+
+#fotomotoWidget .fm-download .fm-preview-image-wrapper img{
+	max-width: 509px!important;
+	max-height: 336px!important;
+}
+
+#fotomotoWidget .fm-download  .fm-preview{
+	background:url(/assets/bg-download.jpg) 50% 50% no-repeat!important;
+}
+
+#fotomotoWidget .fm-download.fm-download-type  .fm-preview{
+	background:url(/assets/ricepaper2.jpg) 0 0 repeat!important;
+}
+
+#fotomotoWidget .fm-download.fm-download-type .fm-download-license{
+	background:none!important;
+}
+#fotomotoWidget .fm-download.fm-download-type  .fm-preview img{
+	padding:5px;
+	background:#fff;
+	-moz-box-shadow:0px 1px 4px rgba(0,0,0,0.5);
+	-webkit-box-shadow:0px 1px 4px rgba(0,0,0,0.5);
+	box-shadow:0px 1px 4px rgba(0,0,0,0.5);
+}
+
+#fotomotoWidget .fm-download .fm-contact-form{
+	margin: 0!important;
+	padding:5px 8px 10px 12px!important;
+	width:390px!important;
+	float:left!important;
+	background:#f8f8f8 url(/assets/ricepaper2.jpg)!important;
+	height:385px!important;
+	padding-right:150px!important;
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-download .fm-contact-form h6,
+#fotomotoWidget .fm-download .fm-contact-form h6{
+	font-size:12px;
+	margin:3px 0 0px 0!important;
+	padding-bottom:5px!important;
+	color:#666!important;
+	font-weight:bold!important;
+	border-bottom:2px solid #ccc;
+}
+
+
+#fotomotoWidget .fm-download .fm-contact-form .fm-note{
+	position:absolute;
+	bottom:13px;
+	left:13px;
+	font-size:11px;
+	color:#888;
+}
+
+#fotomotoWidget .fm-download .fm-contact-form .fm-note strong{
+	font-weight:bold!important;
+}
+
+
+#fotomotoWidget .fm-download .fm-contact-form .fm-half input{
+	width:91%!important;
+}
+
+#fotomotoWidget .fm-download .fm-contact-form .fm-fourth input{
+	width:90%!important;
+}
+#fotomotoWidget .fm-download .fm-contact-form .fm-half select{
+	width:96%!important;
+}
+
+#fotomotoWidget .fm-download .fm-contact-form .fm-full input,
+#fotomotoWidget .fm-download .fm-contact-form .fm-full textarea{
+	width:95%!important;
+}
+
+#fotomotoWidget .fm-download  .fm-full textarea.fm-message{
+	height:70px!important;
+	width:95%!important;
+	color:#333!important;
+}
+
+#fotomotoWidget .fm-download  .fm-form-row{
+}
+
+#fotomotoWidget .fm-attached-image{
+	position:absolute!important;
+	top:0px!important;
+	right:15px!important;
+}
+
+#fotomotoWidget .fm-preview .fm-attached-image img{
+	max-height: 80px!important;
+	max-width:120px!important;
+	top: 15px!important;
+	position: relative!important;
+	z-index: 1!important;
+	box-shadow: 0px 1px 3px #888!important;
+	float:none!important;
+	padding:4px!important;
+	background:#fff!important;
+}
+
+
+#fotomotoWidget .fm-attached-image .fm-attached-image-overlay{
+	display: block!important;
+	top: -10px!important;
+	right: 10px!important;
+	background: url(/assets/widget_sprite.png) -918px -156px no-repeat!important;
+	width: 43px!important;
+	height: 66px;
+	position: absolute!important;
+	z-index: 2!important;
+}
+
+
+#fotomotoWidget .fm-download .fm-download-message{
+	padding-left:35px!important;
+	background:url(/assets/widget_sprite.png) -972px -972px no-repeat!important;
+	font-size:13px!important;
+	line-height:16px!important;
+	color:#999!important;
+}
+
+#fotomotoWidget  .fm-prints .fm-segmented-control.fm-three-segments{
+	width:234px!important;
+}
+#fotomotoWidget  .fm-prints .fm-segmented-control.fm-three-segments a{
+	float:left!important;
+	width:78px!important;
+}
+#fotomotoWidget .fm-has-editions label{
+	max-width:118px!important;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	font-size:11px!important;
+}
+
+
+/* ==================== canvas  =============================== */
+/* ----------------------------------------------------------- */
+
+.fm-trim-top,
+.fm-trim-left,
+.fm-trim-right,
+.fm-trim-bottom{
+	position:absolute!important;
+    background-color:red;
+    opacity: .4;
+    filter: alpha(opacity=40);
+	display:none;
+}
+.fm-trim-top{top:0!important;left:0!important; width:100%}
+.fm-trim-bottom{bottom:0!important;left:0!important;width:100%;}
+.fm-trim-right{top:0!important;right:0!important;height:100%}
+.fm-trim-left{top:0!important;left:0!important;height:100%}
+
+#fotomotoWidget  .fm-canvas .fm-segmented-control.fm-three-segments{
+	width:234px!important;
+}
+#fotomotoWidget  .fm-canvas .fm-segmented-control.fm-three-segments a{
+	float:left!important;
+	width:78px!important;
+}
+
+
+/* ==================== frame  =============================== */
+/* ----------------------------------------------------------- */
+
+#fotomotoWidget .fm-frame .fm-preview-image-container{
+	display:block!important;
+}
+
+#fotomotoWidget .fm-frame .fm-preview-image-wrapper{
+	position:relative!important;
+	display:none;
+	width:100%!important;
+	height:401px!important;
+}
+
+#fotomotoWidget .fm-frame .fm-preview .fm-preview-tools{
+	display:block;
+}
+
+#fotomotoWidget .fm-frame .fm-preview{
+	background:url(/assets/bg-frame.png) 0 0 repeat-x!important;
+}
+
+#fotomotoWidget .fm-frame .fm-preview img{
+	max-height:380px!important;
+	margin-bottom:30px!important;
+}
+
+#fotomotoWidget .fm-frame .fm-frame-tools label{
+	margin:16px 10px 0 10px!important;
+	font-weight:normal!important;
+	color:#ddd!important;
+	font-size:12px!important;
+	text-shadow:0px 1px 0px #000;
+}
+
+#fotomotoWidget .fm-frame .fm-frame-tools .fm-popover{
+	margin:10px 0 0 5px!important;
+}
+
+#fotomotoWidget .fm-frame .fm-frame-tools .fm-frame-material .fm-current-selection{
+	width:60px!important;
+}
+
+#fotomotoWidget .fm-frame .fm-frame-tools .fm-frame-thickness .fm-current-selection{
+	width:30px!important;
+}
+#fotomotoWidget .fm-frame .fm-frame-tools .fm-frame-matte .fm-current-selection{
+	width:80px!important;
+}
+
+#fotomotoWidget .fm-frame .fm-frame-color .fm-current-selection{
+	padding-left:0px!important;
+	text-indent:-9999px!important;
+	position:relative!important;
+	height:22px!important;
+	overflow:hidden!important;
+	padding-right:20px!important;
+}
+
+#fotomotoWidget .fm-frame .fm-frame-color  .fm-data{
+	display:block;
+	height:22px!important;
+	width:43px!important;
+	background-image:url(/assets/sprite_frame_colors.jpg)!important;
+	-moz-border-radius:4px 0 0 4px!important;
+	-webkit-border-radius:4px 0 0 4px!important;
+	border-radius:4px 0 0 4px!important;
+	text-indent:-99999px;
+}
+#fotomotoWidget .fm-frame .fm-frame-color .fm-somethng {
+	background-image:url(/assets/sprite_frame_colors.jpg)!important;
+	background-repeat:no-repeat!important;
+	padding:0!important;
+	text-indent:-9999px!important;
+	position:relative!important;
+	display:inline-block!important;
+	width:20px!important;
+	height:100%!important;
+	-moz-border-radius:5px!important;
+	-webkit-border-radius:5px!important;
+	border-radius:5px!important;
+	border:2px solid #ccc!important;
+}
+
+#fotomotoWidget .fm-frame .fm-frame-color .fm-popover-list .fm-data{
+	-moz-border-radius:0!important;
+	-webkit-border-radius:0!important;
+	border-radius:0!important;
+	width:40px!important;
+	margin:0!important;
+}
+
+#fotomotoWidget .fm-frame .fm-frame-color .fm-popover-list,
+#fotomotoWidget .fm-frame .fm-frame-color .fm-popover-list fm-popover-list-item{
+	width:40px!important;
+	min-width:0px!important;
+}
+#fotomotoWidget .fm-frame .fm-frame-color .fm-popover-list .fm-popover-list-item{
+	padding:0!important;
+}
+#fotomotoWidget .fm-frame .fm-frame-color .fotomotoFrameTypeColorBlack{background-position:0 0;}
+#fotomotoWidget .fm-frame .fm-frame-color .fotomotoFrameTypeColorWalnut{background-position:0 -42px;}
+#fotomotoWidget .fm-frame .fm-frame-color .fotomotoFrameTypeColorMocha{background-position:0 -83px;}
+#fotomotoWidget .fm-frame .fm-frame-color .fotomotoFrameTypeColorCherry{background-position:0 -123px;}
+#fotomotoWidget .fm-frame .fm-frame-color .fotomotoFrameTypeColorCharcoal{background-position:0 -167px;}
+#fotomotoWidget .fm-frame .fm-frame-color .fotomotoFrameTypeColorNatural{background-position:0 -212px;}
+#fotomotoWidget .fm-frame .fm-frame-color .fotomotoFrameTypeColorBlackMetalic{background-position:0 -257px;}
+#fotomotoWidget .fm-frame .fm-frame-color .fotomotoFrameTypeColorSilverMetalic{background-position:0 -298px;}
+
+
+
+#fotomotoWidget .fm-frame  .fm-popover .fm-popover-list .fm-aluminum-color,
+#fotomotoWidget .fm-frame  .fm-popover .fm-popover-list .fm-aluminum-thickness{
+	display:none;
+}
+
+#fotomotoFrame{
+	background:url(/assets/bg_frame_wood_black.jpg);
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:100%;
+	height:100%;
+	-moz-box-shadow:1px 2px 4px #333;
+	-webkit-box-shadow:1px 2px 4px #333;
+	box-shadow:1px 2px 4px #333;
+	z-index:1;
+	margin-bottom:70px;
+}
+
+
+#fotomotoFrame.ColorBlack{background:url(/assets/bg_frame_wood_black.jpg);}
+#fotomotoFrame.ColorCherry{background:url(/assets/bg_frame_wood_cherry.jpg);}
+#fotomotoFrame.ColorWalnut{background:url(/assets/bg_frame_wood_walnut.jpg);}
+#fotomotoFrame.ColorCharcoal{background:url(/assets/bg_frame_wood_charcoal.jpg);}
+#fotomotoFrame.ColorNatural{background:url(/assets/bg_frame_wood_natural.jpg);}
+#fotomotoFrame.ColorMocha{background:url(/assets/bg_frame_wood_mocha.jpg);}
+#fotomotoFrame.ColorBlackMetalic{background:url(/assets/bg_frame_metallic_black.jpg);}
+#fotomotoFrame.ColorSilverMetalic{background:url(/assets/bg_frame_metallic_silver.jpg);}
+
+
+
+#fotomotoFrame #fotomotoOuterMat{
+	background:#FAF5E6!important;
+	position:absolute;
+	z-index:2;
+	-webkit-box-shadow:inset 2px 2px 6px #000000; 
+	-moz-box-shadow:inset 2px 2px 6px #000000;
+	box-shadow:inset 2px 2px 6px #000000;
+}
+
+#fotomotoFrame span{
+	display:block;
+	position:absolute;
+	width:65px;
+	height:65px;
+	background-image:url(/assets/bg_frame_wood_black_corners.jpg);
+	background-repeat:none;
+	z-index:1
+}
+#fotomotoFrame.ColorBlackMetalic span{background-image:url(/assets/bg_frame_corners.png);}
+#fotomotoFrame.ColorSilverMetalic span{background-image:url(/assets/bg_frame_corners.png);}
+#fotomotoFrame.ColorBlack span{background-image:url(/assets/bg_frame_corners.png);}
+#fotomotoFrame.ColorCherry span{background-image:url(/assets/bg_frame_corners.png);}
+#fotomotoFrame.ColorWalnut span{background-image:url(/assets/bg_frame_corners.png);}
+#fotomotoFrame.ColorNatural span{background-image:url(/assets/bg_frame_corners.png);}
+#fotomotoFrame.ColorMocha span{background-image:url(/assets/bg_frame_corners.png);}
+#fotomotoFrame.ColorCharcoal span{background-image:url(/assets/bg_frame_corners.png);}
+
+#fotomotoFrame span.tl{top:0;left:0; background-position:0 0;}
+#fotomotoFrame span.tr{top:0;right:0; background-position:100% 0;}
+#fotomotoFrame span.br{bottom:0;right:0; background-position:100% 100%;}
+#fotomotoFrame span.bl{bottom:0;left:0; background-position:0 100%;}
+
+
+
+#fotomotoFrame #fotomotoInnerMat{
+	background:#fff;
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:3;
+	-webkit-box-shadow:inset 1px 0px 4px #666; 
+	-moz-box-shadow:inset 1px 0px 4px #666;
+	box-shadow:inset 1px 0px 4px #666;
+}
+#fotomotoFrame .white{background-color:#fff!important}
+#fotomotoFrame .black{background-color:#000!important}
+#fotomotoFrame .offWhite{background-color:#faf5e6!important}
+
+#fotomotoFrame span.fm-crop-message-shadow,
+#fotomotoFrame span.fm-crop-message{
+
+	background:none!important;
+	width:100%!important;
+	height:auto!important;
+	font-size:11px!important;
+	text-align:center!important;
+}
+
+#fotomotoWidget #fotomotoFrame .fm-flip-icon{
+
+}
+
+
+#fotomotoFrame #fotomotoImageContainer{
+	background:#efefef;
+	overflow:hidden;
+	width:100%;
+	height:100%;
+	position:relative;
+	border-top:1px solid #333;
+	border-left:1px solid #666;
+}
+
+#fotomotoFrame #fotomotoImageContainer img{
+	cursor:move;
+}
+
+
+
+
+
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview{
+	bottom:10px;
+	right:10px;
+	position:absolute;
+	width:150px;
+	height:135px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	padding:5px;
+	background:#fff;
+	z-index:10;
+	display:none;
+	-moz-box-shadow:-1px 1px 6px rgba(0,0,0,0.4);
+	-webkit-box-shadow:-1px 1px 6px rgba(0,0,0,0.4);
+	box-shadow:-1px 1px 6px rgba(0,0,0,0.4);
+}
+
+
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview img{width:150px; height:135px;}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorBlack img{background:url(/assets/bg_box_wood_black_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorBlack.ThicknessFlat img{background:url(/assets/bg_flat_wood_black_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorCherry img{background:url(/assets/bg_box_wood_cherry_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorCherry.ThicknessFlat img{background:url(/assets/bg_flat_wood_cherry_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorWalnut img{background:url(/assets/bg_box_wood_walnut_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorWalnut.ThicknessFlat img{background:url(/assets/bg_flat_wood_walnut_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorCharcoal img{background:url(/assets/bg_box_wood_charcoal_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorCharcoal.ThicknessFlat img{background:url(/assets/bg_flat_wood_charcoal_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorNatural img{background:url(/assets/bg_box_wood_natural_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorNatural.ThicknessFlat img{background:url(/assets/bg_flat_wood_natural_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorMocha img{background:url(/assets/bg_box_wood_mocha_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorMocha.ThicknessFlat img{background:url(/assets/bg_flat_wood_mocha_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorBlackMetalic img{background:url(/assets/bg_metallic_black_preview.jpg) 0 0 no-repeat}
+#fotomotoWidget .fm-frame #fotomotoFrameCornerPreview.ColorSilverMetalic img{background:url(/assets/bg_metallic_silver_preview.jpg) 0 0 no-repeat}
+
+
+#fotomotoWidget .fm-frame .fm-preview-tools .fm-frame-details{
+	margin:15px 15px 0 10px!important;
+	height:auto!important;
+	line-height:auto!important;
+	color:#aaa!important;
+	font-weight:bold!important;
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-frame .fm-preview-tools .fm-frame-details:hover{
+	color:#fff!important;
+}
+
+#fotomotoWidget .fm-frame .fm-preview-tools .fm-frame-details img{
+	display:block;
+	float:left;
+	margin:1px 4px 0 0;
+}
+
+#fotomotoWidget .fm-canvas  .fm-help.fm-two-columns ul li.fm-has-photo img,
+#fotomotoWidget .fm-frame  .fm-help.fm-two-columns ul li.fm-has-photo img{
+	width: 50px!important;
+	height: 50px!important;
+	border:none!important;
+}
+
+#fotomotoWidget .fm-select-product{
+	height:490px!important;
+	text-align:center!important;
+	position:relative!important;
+}
+
+
+#fotomotoWidget .fm-select-product .fm-disabled{
+	cursor:default!important;
+	opacity:0.3!important;
+	 filter: alpha(opacity=30);
+}
+#fotomotoWidget .fm-select-product .fm-options{
+	text-align:center!important;
+	width:350px!important;
+}
+
+
+#fotomotoWidget .fm-select-product .fm-preview{
+	width:500px!important;
+}
+#fotomotoWidget .fm-select-product .fm-options .fm-options-divider{
+	width:349px!important;
+	height:436px!important;
+	display:table-cell!important;
+	vertical-align:middle!important;
+}
+
+#fotomotoWidget .fm-select-product .fm-current-image{
+	max-width:240px;
+	max-height:395px;
+	padding:10px;
+	background:#fff;
+	-moz-box-shadow:0px 0px 6px rgba(0,0,0,0.5);
+	-webkit-box-shadow:0px 0px 6px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 6px rgba(0,0,0,0.5);
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-select-product h3{
+	
+	border-top: 1px solid white!important;
+	background: #DEDEDE!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #DEDEDE) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#EFEFEF), to(#DEDEDE))!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #DEDEDE) repeat scroll 0 0 transparent!important;
+	height: 39px!important;
+	line-height: 39px!important;
+	color: #666!important;
+	font-size: 17px!important;
+	text-shadow: 0px 1px 0px white;
+	margin: 0  0px!important;
+	padding: 0 15px!important;
+	font-weight: bold!important;
+	text-align: center!important;
+}
+
+#fotomotoWidget .fm-select-product a{	
+	margin:0 5px 5px 0!important;
+	width:120px!important;
+	line-height:normal!important;
+	height:130px!important;
+	position:relative!important;
+}
+
+#fotomotoWidget .fm-contact-artist{
+	padding:15px 0 0!important;
+	text-align:left!important;
+}
+
+#fotomotoWidget .fm-contact-artist img{
+	float:left!important;
+}
+
+#fotomotoWidget .fm-contact-artist .fm-form{
+	clear:both;
+}
+#fotomotoWidget .fm-contact-artist .fm-form{
+	width:470px!important;
+	height:260px!important;
+	padding:0 15px 20px 15px!important;
+}
+
+#fotomotoWidget .fm-contact-artist .fm-form textarea{
+	width:448px!important;
+	height:150px!important;
+	line-height:16px!important;
+	padding-top:10px!important;
+}
+
+
+
+#fotomotoWidget .fm-contact-artist .fm-form input{
+	display: block!important;
+	width: 215px!important;
+	margin-bottom: 0px!important;
+	margin-right: 5px!important;
+	font: 12px 'Helvetica Neue', Helvetica, Arial, sans-serif!important;
+	color: #333!important;
+	float: left!important;
+}
+
+#fotomotoWidget .fm-select-product .fm-contact-artist .fm-not-offered{
+	width:100px!important;
+	height:100px!important;
+	text-align:center!important;
+	float:left!important;
+	border:1px solid #ddd;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	margin:0 0 0 10px!important;
+	position:relative!important;
+}
+
+
+#fotomotoWidget .fm-select-product .fm-contact-artist .fm-not-offered img{
+	position:relative!important;
+	margin:-18px 0 -20px 0!important;
+}
+
+#fotomotoWidget .fm-select-product .fm-contact-artist .fm-not-offered strong,
+#fotomotoWidget .fm-select-product .fm-contact-artist .fm-not-offered span{
+	display:block!important;
+}
+
+#fotomotoWidget .fm-select-product .fm-contact-artist .fm-not-offered strong{
+	font-weight:bold!important;
+	color:#666!important;
+}
+#fotomotoWidget .fm-select-product .fm-contact-artist .fm-not-offered span{
+	font-size:11px!important;
+	color:#777!important;
+	margin-top:5px!important;
+}
+
+#fotomotoWidget .fm-select-product .fm-contact-artist h2{
+	width:360px!important;
+	float:left!important;
+	text-align:left!important;
+	border:none!important;
+	margin-top:20px!important;
+	line-height:22px!important;
+	display:block!important;
+	overflow:hidden!important;
+	
+	font-size:17px!important;
+	font-weight:normal!important;
+	padding: 0!important;
+	color:#666!important;
+	margin-left:10px!important;
+}
+#fotomotoWidget .fm-select-product .fm-contact-artist h2 img{
+	position:relative!important;
+	margin-top:-26px!important;
+}
+
+#fotomotoWidget  .fm-select-product .fm-contact-artist a.fm-button{
+	height:30px!important;
+	line-height:30px!important;
+	width:437px!important;
+	text-align:center!important;
+	margin:5px 0 0!important;
+}
+
+#fotomotoWidget .fm-footer .fm-share-options{
+	width:auto!important;
+	border:none!important;
+	margin-top:2px!important;
+	margin-right:10px!important;
+}
+#fotomotoWidget .fm-footer .fm-share-options a{
+	margin-right:5px!important;
+}
+
+#fotomotoWidget .fm-select-product a.fm-secondary-button{
+	width:83px!important;
+	height:30px!important;
+	line-height:30px!important;
+}
+
+#fotomotoWidget .fm-select-product a .fm-soon-tag{
+	position:absolute!important;
+	top:-8px!important;
+	left:-4px!important;
+	display:block!important;
+	width:38px!important;
+	height:38px!important;
+	background:url(/assets/widget_sprite.png) -871px -164px no-repeat!important;
+}
+
+#fotomotoWidget .fm-select-product a strong,
+#fotomotoWidget .fm-select-product a span{
+	display:block!important;
+	position:relative!important;
+	font-weight:bold!important;
+}
+#fotomotoWidget .fm-select-product a img{
+	display:block!important;
+	float:none!important;
+	margin-left:7px!important;
+}
+#fotomotoWidget .fm-select-product a.fm-not-offered img{
+	opacity:0.3;
+}
+
+
+#fotomotoWidget .fm-select-product a strong{
+	font-size:13px!important;
+	
+	color:#333!important;
+	line-height:normal!important;
+	margin:-10px 0 0!important;
+}
+#fotomotoWidget .fm-select-product a span{
+	color:#666!important;
+	font-size:11px!important;
+	font-style:italic!important;
+	margin:5px 0 0!important;
+	text-shadow:none!important;
+	font-weight:normal!important;
+}
+
+#fotomotoWidget .fm-select-product a.fm-disabled.fm-soon{
+	opacity:0.7!important;
+}
+
+#fotomotoWidget .fm-select-product .fm-top-shadow{
+	background:url(/assets/horizontal-shadow1.png) 50% 0px no-repeat!important;
+	width:100%!important;
+	height:5px!important;
+	position:absolute!important;
+	top:40px!important;
+	left:0!important;
+	z-index:20!important;
+	
+}
+
+/* ==================== payment form  =============================== */
+/* ----------------------------------------------------------- */
+
+iframe.payment-form{
+	width: 850px!important;
+	height: 480px!important;
+	border:none!important;
+}
+.fm-embeded-payment{
+	width: 630px!important;
+	float: left!important;
+	height: 485px!important;
+	font-family:Helvetica, arial,sans-serif;
+	background:#fff;
+}
+
+#fotomotoWidget .fm-embeded-payment .fm-head{
+	color: #666!important;
+	font-size: 13px!important;
+	line-height:20px!important;
+	text-shadow: 0px 1px 0px white!important;
+	margin: 0px!important;
+	padding: 15px 10px!important;
+	font-weight: bold!important;
+	border-top: 1px solid white!important;
+	background: #DEDEDE!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #DEDEDE) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#EFEFEF), to(#DEDEDE))!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #DEDEDE) repeat scroll 0 0 transparent!important;
+	font-family:Helvetica, arial, sans-serif;
+}
+
+.fm-embeded-payment .fm-head #siteseal{
+	float:left;
+	margin:-10px 15px 0 0;
+	border:none!important;
+	width:160px!important;
+	height:60px!important;
+	overflow:hidden!important;
+	text-align:right!important;
+}
+
+.fm-embeded-payment .fm-head span{
+	font-weight:normal!important;
+}
+
+.fm-embeded-payment .fm-new-window{
+	background:url(/assets/widget_sprite.png) -983px -722px no-repeat;
+	padding-left:17px;
+	color:#333;
+	text-decoration:none;
+}
+
+.fm-embeded-payment .fm-card-cvv,
+.fm-embeded-payment .fm-card-expiration{
+	margin-left:5px!important;
+}
+
+.fm-embeded-payment .fm-card-cvv input {
+	width:26px!important;
+}
+
+.fm-embeded-payment .fm-card-no input{
+	width:130px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-embeded-payment .fm-top-shadow{
+	background:url(/assets/horizontal-shadow1.png) 50% 0px no-repeat!important;
+	width:100%!important;
+	height:5px!important;
+	position:relative!important;
+	top:auto!important;
+}
+
+.fm-embeded-payment input#cc-name{
+	width:330px!important;
+}
+
+#fotomotoWidget .fm-cart .fm-embeded-payment .fm-side h3{
+	text-align:right!important;
+	font-size:15px!important;
+	font-weight:normal!important;
+}
+
+.fm-embeded-payment .fm-form{
+	padding-top:15px!important;
+}
+
+.fm-embeded-payment  .fm-third{
+	width:115px!important;
+}
+
+
+.fm-embeded-payment  .fm-third input{
+	width:99px!important;
+}
+
+.fm-embeded-payment .fm-full input{
+	width:330px!important;
+}
+
+.fm-embeded-payment  .fm-half{
+	width:175px!important;
+}
+
+.fm-embeded-payment .fm-half input{
+	width:155px!important;
+}
+
+
+.fm-embeded-payment .fm-full select{
+	width:340px!important;
+}
+
+.fm-embeded-payment  .fm-billing-address{
+	margin-top:20px!important;
+}
+
+.fm-embeded-payment .fm-secure-icons{
+	
+}
+
+.fm-embeded-payment .fm-message{
+	margin:0 100px 5px 65px!important;
+}
+
+#fotomotoWidget .fm-make-payment{
+	display: block!important;
+width: 180px!important;
+height: 30px!important;
+line-height:30px!important;
+position: absolute!important;
+bottom: 10px!important;
+left: 10px!important;
+text-align:center!important;
+}
+
+.fm-same-as-shipping{
+	color:#888!important;
+	font-size:10px!important;
+	float:right!important;
+	font-weight:normal!important;
+	margin-right:80px!important;
+	display:inline!important;
+}
+.fm-embeded-payment .fm-full .fm-same-as-shipping input{
+	margin-right:5px!important;
+	display:inline!important;
+	width:auto!important;
+}
+
+.fm-braintree{
+	display: block!important;
+line-height:30px!important;
+margin:5px 0 0 10px!important;
+}
+
+.card-images.selected img{
+	opacity:0.4;
+	 filter: alpha(opacity=40);
+}
+
+.card-images.selected img.active{
+	opacity:1;
+	 filter: alpha(opacity=100);
+}
+
+#fotomotoWidget  .fm-thankyou{
+	background:#fff url(/assets/bg-thankyou.jpg) 0 0 no-repeat;
+	width: 850px!important;
+	height: 480px!important;
+	border:none!important;
+	position:relative!important;
+}
+
+#fotomotoWidget  .fm-thankyou .fm-text{
+	position:absolute;
+	top:40px;
+	left:380px;
+}
+
+#fotomotoWidget .fm-thankyou .fm-text h2{
+	margin:0!important;
+	padding:0!important;
+	color:#333!important;
+	font-size:22px!important;
+	font-weight:normal!important;
+}
+
+#fotomotoWidget .fm-thankyou .fm-text p{
+	margin:15px 50px 0 0!important;
+	padding:0!important;
+	color:#888!important;
+	font-size:13px!important;
+	line-height:15px!important;
+}
+
+#fotomotoWidget .fm-thankyou .fm-text .fm-message{
+	margin:15px 50px 0 0!important;
+	font-size:14px!important;
+	line-height:18px!important;
+	padding:10px!important;
+}
+
+
+#fotomotoWidget .fm-thankyou .fm-image-frame{
+	position:absolute!important;
+	top:30px!important;
+	left:111px!important;
+	width:245px!important;
+}
+
+#fotomotoWidget .fm-thankyou .fm-image-frame img{
+	padding:5px!important;
+	background:#333!important;
+	-moz-box-shadow:0px 3px 5px #444;
+	-webkit-box-shadow:0px 3px 5px #444;
+	box-shadow:0px 3px 5px #444;
+	max-width:215px!important;
+	max-height:300px!important;
+}
+
+
+/* ====================  login =============================== */
+/* ----------------------------------------------------------- */
+#fotomotoWidget .fm-login{
+	width:545px!important;
+	height:260px!important;
+	margin-top:-130px!important;
+	margin-left:-272px!important;
+}
+
+
+#fotomotoWidget .fm-login .fm-login-header{
+	border-top: 1px solid white!important;
+	background: #DEDEDE!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #DEDEDE) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#EFEFEF), to(#DEDEDE))!important;
+	background: -moz-linear-gradient(center top , #EFEFEF, #DEDEDE) repeat scroll 0 0 transparent!important;
+	height: 39px!important;
+	line-height: 39px!important;
+}
+
+#fotomotoWidget .fm-login .fm-login-header p{
+	margin:0 0 0 10px;
+	color:#777;
+	font-weight:bold;
+	text-shadow:0px 1px 0px #fff;
+}
+
+#fotomotoWidget .fm-login .fm-login-form{
+	width:250px!important;
+	float:left!important;
+	margin:0!important;
+	padding:0!important;
+	overflow:hidden!important;
+}
+
+#fotomotoWidget .fm-login .fm-login-form form{
+	margin:20px 0 0 20px;
+}
+
+#fotomotoWidget .fm-login .fm-login-form form input{
+	width:210px!important;
+}
+
+#fotomotoWidget .fm-login .fm-login-form .fm-button{
+	float:right!important;
+	margin:5px 5px 0 0!important;
+}
+
+#fotomotoWidget .fm-login .fm-login-form a.fm-forgot-password{
+	margin:10px 0 0;
+	float:left;
+	color:#333;
+}
+
+#fotomotoWidget .fm-login .fm-connect-panel{
+	width:230px!important;
+	float:left!important;
+	margin:0 0 0 15px!important;
+	padding:25px!important;
+	background:#efefef;
+	height:139px;
+	-moz-border-radius:0px 0px 8px 0px!important;
+	-webkit-border-radius:0px 0px 8px 0px!important;
+	border-radius:0px 0px 8px 0px!important;
+}
+
+#fotomotoWidget .fm-login .fb,
+#fotomotoWidget .fm-login .google,
+#fotomotoWidget .fm-login .twitter{
+	display:block;
+	background-image:url(/assets/connect-buttons.png);
+	background-repeat:no-repeat;
+	width:231px;
+	height:36px;
+	float:left;
+	margin:0 5px 10px 0;
+	text-indent:-9999px;
+	overflow:hidden;
+}
+
+#fotomotoWidget .fm-login .fb{
+	background-position:0 0px;
+}
+#fotomotoWidget .fm-login .twitter{
+	background-position:0px -60px;
+}
+#fotomotoWidget .fm-login .google{
+	background-position:0px -119px;
+}
+
+#fotomotoWidget .fm-login .fm-connect-authorization{
+	text-align:center!important;
+}
+#fotomotoWidget .fm-login .fm-connect-authorization h3{
+	font-size:16px!important;
+	margin:15px 0!important;
+	font-weight:normal!important;
+	color:#444!important;
+}
+
+#fotomotoWidget .fm-login .fm-connect-authorization img{
+	margin-top:40px!important;
+}
+
+#fotomotoWidget .fm-login .fm-connect-authorization a.fm-button{
+	padding:5px 15px!important;
+}
+
+#fotomotoWidget .fm-login .fm-signup-form{
+	padding:15px 15px 15px!important;
+}
+#fotomotoWidget .fm-login .fm-signup-form .fm-form-row{
+	margin-bottom:10px!important;
+}
+
+#fotomotoWidget .fm-login .fm-signup-form form input{
+	width:290px!important;
+}
+#fotomotoWidget .fm-login .fm-new-user-success{
+	padding:15px;
+}
+#fotomotoWidget .fm-login .fm-new-user-success h3{
+	font-size:16px!important;
+	margin:0px 0 0px !important;
+	font-weight:normal!important;
+	color:#fff!important;
+}
+#fotomotoWidget .fm-login .fm-new-user-success p{
+	font-size:14px!important;
+	margin:15px 0 0!important;
+	line-height:20px!important;
+	color:#666!important;
+}
+
+#fotomotoWidget .fm-login .fm-new-user-success .fm-new-window{
+	background:url(/assets/widget_sprite.png) -983px -722px no-repeat!important;
+	padding-left:17px!important;
+	color:#333!important;
+	text-decoration:none!important;
+	font-weight:bold!important;
+	font-size:14px!important;
+}
+
+#fotomotoWidget .fm-login .fm-no-right-button{
+	margin-right:0!important;
+	border-right:0!important;
+}
+
+
+
+/* ==================== tipsy tooltips  =============================== */
+/* ----------------------------------------------------------- */
+
+.tipsy { font-size: 9px!important; position: absolute; padding: 5px; z-index: 1000000000000;  font-family: "Lucida Grande", sans-serif;}
+  .tipsy-inner { background-color: #000; color: #FFF; max-width: 200px; padding: 5px 8px 4px 8px; text-align: center; }
+
+  /* Rounded corners */
+  .tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+  
+  /* Uncomment for shadow */
+  /*.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
+  
+  .tipsy-arrow { position: absolute; width: 0; height: 0; line-height: 0; border: 5px dashed #000; }
+  
+  /* Rules to colour arrows */
+  .tipsy-arrow-n { border-bottom-color: #000; }
+  .tipsy-arrow-s { border-top-color: #000; }
+  .tipsy-arrow-e { border-left-color: #000; }
+  .tipsy-arrow-w { border-right-color: #000; }
+  
+	.tipsy-n .tipsy-arrow { top: 0px; left: 50%; margin-left: -5px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent; }
+    .tipsy-nw .tipsy-arrow { top: 0; left: 10px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent;}
+    .tipsy-ne .tipsy-arrow { top: 0; right: 10px; border-bottom-style: solid; border-top: none;  border-left-color: transparent; border-right-color: transparent;}
+  .tipsy-s .tipsy-arrow { bottom: 0; left: 50%; margin-left: -5px; border-top-style: solid; border-bottom: none;  border-left-color: transparent; border-right-color: transparent; }
+    .tipsy-sw .tipsy-arrow { bottom: 0; left: 10px; border-top-style: solid; border-bottom: none;  border-left-color: transparent; border-right-color: transparent; }
+    .tipsy-se .tipsy-arrow { bottom: 0; right: 10px; border-top-style: solid; border-bottom: none; border-left-color: transparent; border-right-color: transparent; }
+  .tipsy-e .tipsy-arrow { right: 0; top: 50%; margin-top: -5px; border-left-style: solid; border-right: none; border-top-color: transparent; border-bottom-color: transparent; }
+  .tipsy-w .tipsy-arrow { left: 0; top: 50%; margin-top: -5px; border-right-style: solid; border-left: none; border-top-color: transparent; border-bottom-color: transparent; }
+/*
+ * imgAreaSelect animated border style
+ */
+
+
+.imgareaselect-border1 {
+	background: url(border-anim-v.gif) repeat-y left top;
+}
+
+.imgareaselect-border2 {
+    background: url(border-anim-h.gif) repeat-x left top;
+}
+
+.imgareaselect-border3 {
+    background: url(border-anim-v.gif) repeat-y right top;
+}
+
+.imgareaselect-border4 {
+    background: url(border-anim-h.gif) repeat-x left bottom;
+}
+
+.imgareaselect-border1, .imgareaselect-border2,
+.imgareaselect-border3, .imgareaselect-border4 {
+    filter: alpha(opacity=20);
+	opacity: 0.2;
+}
+
+.hover .imgareaselect-border1,
+.hover .imgareaselect-border2,
+.hover .imgareaselect-border3,
+.hover .imgareaselect-border4{
+	opacity:0.5;
+	filter: alpha(opacity=50);
+}
+
+.imgareaselect-handle {
+    background-color: #fff;
+	border: solid 1px #000;
+    filter: alpha(opacity=50);
+	opacity: 0.5;
+}
+
+.imgareaselect-outer {
+	background-color: #000;
+    filter: alpha(opacity=50);
+	opacity: 0.5;
+	
+}
+
+.imgareaselect-selection {
+	z-index:1000000000!important;
+}
+
+
+
+
+
+
+
+/*
+ * imgAreaSelect animated border style
+ */
+
+.imgareaselect-white-border1 {
+	background: url(border-anim-v.gif) repeat-y left top;
+}
+
+.imgareaselect-white-border2 {
+    background: url(border-anim-h.gif) repeat-x left top;
+}
+
+.imgareaselect-white-border3 {
+    background: url(border-anim-v.gif) repeat-y right top;
+}
+
+.imgareaselect-white-border4 {
+    background: url(border-anim-h.gif) repeat-x left bottom;
+}
+
+.imgareaselect-white-border1, .imgareaselect-white-border2,
+.imgareaselect-white-border3, .imgareaselect-white-border4 {
+    filter: alpha(opacity=20);
+	opacity: 0.2;
+}
+
+.imgareaselect-white-handle {
+    background-color: #fff;
+	border: solid 1px #000;
+    filter: alpha(opacity=50);
+	opacity: 0.5;
+}
+
+.imgareaselect-white-outer {
+	background-color: #fff;
+    filter: alpha(opacity=50);
+	opacity: 0.8;
+	overflow:visible!important;
+	
+}
+
+.imgareaselect-white-selection {
+	z-index:1000000000!important;
+}
+/** New style overloaded fixes **/
+
+.fm-frame #fotomotoImageContainer #fm-current-image {
+  max-height: none !important;
+  max-width: none !important;
+}
+
+#fotomotoWidget iframe, .FotomotoToolbarClass iframe {width:1px;height:1px;position:absolute;visibility:hidden;z-index:10000000;top:-10000px;left:-10000px;}
+.FotomotoNoToolbar {visibility: hidden;position: absolute;top: -10000px;left: -10000px;}
+#fotomoto_loading_image {margin-top: 8px;margin-bottom: 8px; display:inline!important;}
+.FotomotoLoadingDiv {text-align: center;padding: 12px 0px;}
+.FotomotoLoadingBox {background:url(/assets/82828270.png);padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;width:220px;height:60px;}
+/*** Toolbar ****/
+.FotomotoClear {clear: both;}
+
+ul.FotomotoBar,
+ul.FotomotoBar a,
+ul.FotomotoBar a.FotomotoBarLink {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  text-decoration: none;
+  clear: both;
+  outline: none;
+}
+
+html > body ul.FotomotoBar,
+html > body ul.FotomotoBar a,
+html > body ul.FotomotoBar a.FotomotoBarLink {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  text-decoration: none;
+  clear: both;
+  outline: none;
+}
+
+ul.FotomotoBar a:hover,
+ul.FotomotoBar a.FotomotoBarLink:hover {
+  text-decoration: underline;
+}
+
+
+html > body ul.FotomotoBar a:hover,
+html > body ul.FotomotoBar a.FotomotoBarLink:hover {
+  text-decoration: underline;
+}
+
+html > body ul.FotomotoBar {
+	padding: 0;
+	margin: 0;
+	text-indent: 0;
+}
+
+ul.FotomotoBar {
+	padding: 0;
+	margin: 0;
+	text-indent: 0;
+}
+
+
+html > body ul.FotomotoBar li {
+  float: left;
+  display: inline;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-image: none;
+}
+
+ul.FotomotoBar li {
+  float: left;
+  display: inline;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-image: none;
+}
+
+html > body ul.FotomotoBar li:before {
+	content: "";
+}
+
+ul.FotomotoBar li:before {
+	content: "";
+}
+
+
+html > body ul.FotomotoBar .FotomotoSeparator,
+html > body span.FotomotoSep1,
+html > body span.FotomotoSep2,
+html > body span.FotomotoSep3,
+html > body span.FotomotoSep4{
+  margin: 0px 4px 0px 4px;
+  position: relative;
+}
+
+ul.FotomotoBar .FotomotoSeparator,
+span.FotomotoSep1,
+span.FotomotoSep2,
+span.FotomotoSep3,
+span.FotomotoSep4,{
+  margin: 0px 4px 0px 4px;
+  position: relative;
+}
+
+
+html > body ul.FotomotoBar li.FotomotoPrintButton{
+}
+
+html > body ul.FotomotoBar li.FotomotoCardButton{
+}
+
+html > body ul.FotomotoBar li.FotomotoECardButton {
+  float: right;
+}
+
+ul.FotomotoBar li.FotomotoECardButton {
+  float: right;
+}
+ul.FotomotoBar li.FotomotoShareButton {
+  float: left;
+}
+
+ul.FotomotoBar li.FotomotoShareSeparator {
+  float: left;
+}
+
+/* clearfix
+-------------------------------------------------------------- */
+.fmClearfix:after,
+.fm_clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+* html .fmClearfix, * html .fm_clearfix { zoom: 1; } /* IE6 */
+*:first-child+html .fmClearfix, *:first-child+html .fm_clearfix { zoom: 1; } /* IE7 */
+
+/* confirm */
+#fotomoto_popup {font-family:Arial,Helvetica,sans-serif; font-size:14px; text-align:left; background:#fff; border:1px solid #999; padding-bottom:10px;
+  background:#fff!important;
+	-moz-border-radius:		8px!important;
+	-webkit-border-radius:	8px!important;
+	-border-radius:			8px!important;
+	-moz-box-shadow:    0px 5px 80px #505050!important;
+  	-webkit-box-shadow: 0px 5px 80px #505050!important;
+  	box-shadow:         0px 5px 80px #505050!important;
+	-moz-background-clip: padding!important; -webkit-background-clip: padding-box!important; background-clip: padding-box!important;
+}
+#fotomoto_popup .fm_header {
+  background:#111!important;
+	background: -moz-linear-gradient(center top , #444, #111) repeat scroll 0 0 transparent!important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#111))!important;
+	background: -moz-linear-gradient(center top , #444, #111) repeat scroll 0 0 transparent!important;
+	-moz-border-radius:8px 8px 0 0!important;
+	-webkit-border-radius:8px 8px 0 0!important;
+	-border-radius:8px 8px 0 0!important;
+  padding: 10px;
+}
+#fotomoto_popup .fm_header span {color:#fff; font-weight:bold;}
+#fotomoto_popup .fm_message {color:#333; margin:0; padding:12px 4px 12px 8px; font-size:1em;border:none;background:none;width:340px;padding:8px;text-align:left;}
+#fotomoto_popup .fm_buttons {width:160px; float:right; padding:10px 8px 0;}
+#fotomoto_popup .fm_buttons div {
+  float:right; 
+  font-weight:bold; cursor:pointer;  
+	font-size:14px;
+	padding: 6px 20px;
+	text-align:center!important;
+	font-weight:bold!important;
+	 background-color: #FB551E!important;
+   background-image: -webkit-gradient(linear, left top, left bottom, from(#FE6B2A), to(#DC5324))!important; /* Saf4+, Chrome */
+   background-image: -webkit-linear-gradient(top, #FE6B2A, #DC5324)!important; /* Chrome 10+, Saf5.1+, iOS 5+ */
+   background-image:    -moz-linear-gradient(top, #FE6B2A, #DC5324)!important; /* FF3.6 */
+   background-image:     -ms-linear-gradient(top, #FE6B2A, #DC5324)!important; /* IE10 */
+   background-image:      -o-linear-gradient(top, #FE6B2A, #DC5324)!important; /* Opera 11.10+ */
+   background-image:         linear-gradient(top, #FE6B2A, #DC5324)!important;
+   color:#fff!important;
+     margin-left: 8px;
+}
+
+
+.fotomotoPopup{
+	width:140px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+	background: transparent;
+  position:absolute;
+  z-index: 1001;
+}
+
+.fotomotoPopup .fotomotoPopupContent{
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	padding:0 5px 5px;
+	background: #fff;
+}
+.fotomotoPopup h1{
+	background:#1c2122 url(/assets/logo_pu.gif) 10px 5px no-repeat;
+	border-bottom:2px solid #ff5c11;
+	padding:4px;
+	margin:0;
+	float: none;
+	font-size:1px;
+	text-indent:-9999px;
+	overflow:hidden;
+	height:16px;
+	width: 132px;
+}
+
+.fotomotoPopup ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+	width:100%;
+
+}
+.fotomotoPopup ul li{
+	height:25px;
+	margin:0;
+	padding:0;
+	text-align: left;
+	border-bottom:1px dotted #ccc;
+}
+.fotomotoPopup ul li.fm_last{
+	border:none;
+}
+.fotomotoPopup ul li a{
+	display:block;
+	margin:0;
+	padding:0;
+	height:25px;
+	line-height:25px;
+	overflow:hidden;
+	cursor:pointer;
+	color: #000;
+}
+
+.fotomotoPopup ul li a:hover{
+	background-color:#efefef;
+}
+.fotomotoPopup ul.icons li a{padding-left:35px; background-repeat:no-repeat;}
+.fotomotoPopup ul.icons li a#fotomotoPrint{ background-image:url(/assets/share_popup_icons.gif); background-position:-4px 0px; }
+.fotomotoPopup ul.icons li a#fotomotoCard{ background-image:url(/assets/share_popup_icons.gif);  background-position:-2px -52px ; }
+.fotomotoPopup ul.icons li a#fotomotoSkin{ background-image:url(/assets/share_popup_icons.gif); background-position:-2px -104px ; }
+.fotomotoPopup ul.icons li a#fotomotoDownload{ background-image:url(/assets/share_popup_icons.gif); background-position: -2px -156px  }
+.fotomotoPopup ul.icons li a#fotomotoEcard{ background-image:url(/assets/share_popup_icons.gif); background-position: -2px -208px; }
+
+.fotomotoPopup ul.icons li a#fotomotoPrint:hover{  background-position:-4px -26px; }
+.fotomotoPopup ul.icons li a#fotomotoCard:hover{   background-position:-2px -78px ; }
+.fotomotoPopup ul.icons li a#fotomotoSkin:hover{  background-position:-2px -130px ; }
+.fotomotoPopup ul.icons li a#fotomotoDownload:hover{  background-position: -2px -182px  }
+.fotomotoPopup ul.icons li a#fotomotoEcard:hover{  background-position: -2px -234px; }
+
+.fotomotoPopup ul.icons li a#fm_facebook{background-image:url(/assets/share_popup_icons.gif);  background-position:-4px -260px; }
+.fotomotoPopup ul.icons li a#fm_twitter{background-image:url(/assets/share_popup_icons.gif);   background-position:-2px -312px ; }
+.fotomotoPopup ul.icons li a#fm_buzz{background-image:url(/assets/share_popup_icons.gif);  background-position:-2px -364px ; }
+.fotomotoPopup ul.icons li a#fm_digg{ background-image:url(/assets/share_popup_icons.gif); background-position: -2px -416px; }
+
+.fotomotoPopup ul.icons li a#fm_facebook:hover{  background-position:-4px -286px; }
+.fotomotoPopup ul.icons li a#fm_twitter:hover{   background-position:-2px -338px ; }
+.fotomotoPopup ul.icons li a#fm_buzz:hover{  background-position: -2px -390px;  }
+.fotomotoPopup ul.icons li a#fm_digg:hover{  background-position:-2px -442px ; }
+
+.FotomotoFloatedToolbar {
+  position: fixed;
+  width: 80%;
+  top: 0px;
+  left: 10%;
+  z-index: 1000;
+  padding: 4px 8px;
+  background: #fff;
+  -moz-border-radius:0px 0px 8px 8px;
+	-webkit-border-radius:0px 0px 8px 8px;
+}
+
+.FotomotoiWebFloated {
+  position: fixed;
+  width: 80%;
+  bottom: 0px;
+  left: 10%;
+  z-index: 1000;
+  padding: 4px 8px;
+  background: #666;
+  -moz-border-radius:8px 8px 0px 0px;
+	-webkit-border-radius:8px 8px 0px 0px;	
+}
+.FotomotoiWebFloated a {color: #fff;}
+#fotomoto_view_cart_float {
+	position:absolute;
+	height:34px;
+	width:115px;
+	-moz-box-shadow:0px 0px 10px #000;
+	-webkit-box-shadow:0px 0px 10px #000;
+	box-shadow:0px 0px 10px #000;
+	-moz-border-radius:17px;
+	-webkit-border-radius:17px;
+	border-radius:17px;
+	z-index: 1000;
+	padding:0;
+	background:#fff;
+	/*border: 5px solid #CCCCCC;*/
+}
+#fotomoto_view_cart_float #fotomoto_cart_info_div {
+	overflow:hidden;
+	
+	
+}
+#fotomoto_cart_info_div span#fotomoto_view_cart_total_items {
+	color:#fff;
+	display:block;
+	position:absolute;
+	top:-5px;
+	left:-5px;
+	height:16px;
+	line-height:16px;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:10px;
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	padding:0 5px;
+	font-weight:normal;
+	background:#cb0015;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ec7780), to(#cb0015))!important; /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #ec7780, #cb0015)!important; /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, #ec7780, #cb0015)!important; /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #ec7780, #cb0015)!important; /* IE10 */
+  background-image:      -o-linear-gradient(top, #ec7780, #cb0015)!important; /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #ec7780, #cb0015)!important;
+text-shadow:0px 1px 0px #000;
+border:2px solid #fff;
+-moz-box-shadow:0px 0px 3px #000;
+-webkit-box-shadow:0px 0px 3px #000;	
+box-shadow:0px 0px 3px #000;
+z-index:100000;	
+}
+#fotomoto_cart_info_div a {
+	font-family: Helvetica, arial, sans-serif;
+	-moz-border-radius:17px;
+	-webkit-border-radius:17px;
+	border-radius:17px;
+	height:34px;
+	font-size: 12px;
+	text-shadow:0px 1px 0px #000;	
+    font-weight:bold; cursor:pointer;  
+	padding:0!important;
+	text-decoration: none !important;
+	text-align:left!important;
+	font-weight:bold!important;
+	background-color: #111!important;
+	width:115px!important;
+	line-height:34px!important;
+	background:#444;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#444444), to(#111))!important; /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #444444, #111)!important; /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, #444444, #111)!important; /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #444444, #111)!important; /* IE10 */
+  background-image:      -o-linear-gradient(top, #444444, #111)!important; /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #444444, #111)!important;
+  color:#fff!important;
+  position:absolute;
+  bottom:0px;
+  right:0;
+}
+
+#fotomoto_cart_info_div a:hover{
+	background:#444!important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#111), to(#444))!important; /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #111, #444)!important; /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, #111, #444)!important; /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #111, #444)!important; /* IE10 */
+  background-image:      -o-linear-gradient(top, #111, #444)!important; /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #111, #444)!important;
+}
+#fotomoto_cart_info_div .fotomoto_icon{
+		display:block!important;
+		width:23px!important;
+		height:23px!important;
+		background:url(/assets/f_icon.png) 0 0 no-repeat;
+		float:left!important;
+		margin:8px 0 0 10px;
+		padding:0!important;
+}
+
+#fotomoto_cart_info_div .fotomoto_cart_icon{
+		display:-moz-inline-stack;
+		display:inline-block;
+		zoom:1;
+		*display:inline;
+		position:relative;
+		top:4px;
+	width:18px!important;
+	height:18px!important;
+	background:url(/assets/cart_icon.png) 0 0 no-repeat;
+
+	margin:0 9px 0 10px;
+	padding:0!important;
+}
+
+#fotomoto_cart_info_div .fotomoto_items{
+	display:none;
+}
+
+#fotomotoWidget .fm-segmented-control.fm-one-segment a{
+	width:100%!important;
+}
+
+#fotomotoWidget iframe#fotomoto_payment_frame {
+ width:850px;
+ height:477px;
+ position:relative;
+ visibility:visible;
+ border: 0;
+ top: 0;
+ left: 0;
+ z-index: auto;
+}
+
+.FotomotoSelectImage {
+	width: 200px;
+	text-align:center;
+	vertical-align:middle;
+	height: 140px;
+}
+#fotomotoWidget table.FotomotoSelectImageBox {
+	width: 180px;
+	height: 120px;
+	background-color: #e3e3e3;
+	border: 4px solid transparent;
+	margin: 0px auto;
+	cursor: pointer;
+}
+#fotomotoWidget table.FotomotoSelectedImageBox {
+	border: 4px solid #f37021;
+}
+
+#fotomotoWidget iframe#fm-login-frame {
+ width:545px!important;
+ height:229px!important;
+ position:relative;
+ visibility:visible;
+ border: 0;
+ top: 0;
+ left: 0;
+ z-index: auto;
+}
+/*
+
+
+
+
+*/
