@@ -216,24 +216,21 @@ var util = {
 
 function ImgsClient(url, options) {
 
-  EventEmitter.call(this);
-
   var self = this;
 
   options = util.extend({}, options);
   
-  // Start Binary.js server
-  this._client = new BinaryClient(url);
+  this.worker = [];
+  this.worker.push(new Worker('worker.js'));
+  this.worker.push(new Worker('worker.js'));
   
-  this._client.on('open', function(){
-    self._init();
-  });
-  
-  this._client.on('stream', function(stream, command){
-    if(command.type === 'image') {
-      self._image(stream, command);
-    }
-  });
+  for(var i = 0; i < this.worker.length; i++) {
+    this.worker[i].onmessage = function(event){
+      var command = event.data;
+      var img = self._images[command.id];
+      img.src = self._cache[command.src] = command.data;
+    };
+  }
   
   this._cache = {};
   
@@ -244,15 +241,17 @@ function ImgsClient(url, options) {
   // Image id generator
   this._imageId = 0;
   
+  this._init();
+  
 };
 
 
 util.inherits(ImgsClient, EventEmitter);
 
 ImgsClient.prototype._init = function(){
-  this._request = this._client.createStream({type: 'request'});
-  // Initial load
+ // Initial load
   var imgs = document.getElementsByTagName('img');
+  var data = [];
   for (var i = 0, ii = imgs.length; i < ii; i++) {
     var src;
     if(src = imgs[i].getAttribute('stream')) {
@@ -262,21 +261,13 @@ ImgsClient.prototype._init = function(){
       if(cached = this._cache[src]) {
         image.src = cached;
       } else {
-        this._request.write({type: 'image', src: src, id: imageId});
+        data.push({src: src, id: imageId});
       }
     }
   }
+  this.worker[Math.floor(Math.random()*2)].postMessage(data);
 };
 
-ImgsClient.prototype._image = function(stream, command) {
-  var self = this;
-  var parts = [];
-  var img = this._images[command.id];
-  stream.on('data', function(data){
-    parts.push(data);
-    img.src = self._cache[command.src] = self._createObjectURL(parts);
-  });
-}
 
 ImgsClient.prototype._createObjectURL = function(data){
   return this._URL.createObjectURL(new Blob(data));
