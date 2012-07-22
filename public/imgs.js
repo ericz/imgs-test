@@ -222,7 +222,7 @@ function ImgsClient(url, options) {
   
   this.worker = [];
   this.worker.push(new Worker('worker.js'));
-  this.worker.push(new Worker('worker.js'));
+  //this.worker.push(new Worker('worker.js'));
   
   for(var i = 0; i < this.worker.length; i++) {
     this.worker[i].onmessage = function(event){
@@ -265,7 +265,7 @@ ImgsClient.prototype._init = function(){
       }
     }
   }
-  this.worker[Math.floor(Math.random()*2)].postMessage(data);
+  this.worker[0].postMessage(data);
 };
 
 
