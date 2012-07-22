@@ -70,7 +70,7 @@ function ImgsClient(url, options) {
   this._client.on('open', function(){
     console.log('open');
   
-    
+    self._init();
   });
   
   this._client.on('stream', function(stream){
