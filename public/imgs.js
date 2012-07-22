@@ -127,7 +127,7 @@ ImgsClient.prototype._init = function(){
   var part = Math.ceil(imgs.length/3);
   var data = [];
   for(var j = 0; j < 3; j++) {
-  for (var i = j*part; ii = (j+1)*part; i < ii; i++) {
+  for (var i = j*part, ii = (j+1)*part; i < ii; i++) {
     var src;
     if(src = imgs[i].getAttribute('stream')) {
       var imageId = this._imageId++;
