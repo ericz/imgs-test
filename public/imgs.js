@@ -65,15 +65,37 @@ function ImgsClient(url, options) {
 
   options = util.extend({}, options);
   
-  this._client = new BinaryClient('ws://academyready.com:8085');
+  this._client1 = new BinaryClient('ws://academyready.com:8085');
+   this._client2 = new BinaryClient('ws://academyready.com:8085');
+    this._client3 = new BinaryClient('ws://academyready.com:8085');
   
-  this._client.on('open', function(){
+  this._client3.on('open', function(){
     console.log('open');
   
     self._init();
   });
   
-  this._client.on('stream', function(stream){
+  this._client1.on('stream', function(stream){
+    
+    stream.on('data', function(data){
+      for(var i = 0,  ii = data.length; i < ii; i++) {
+        var id = data[i].id;
+        self._images[id].src = self._URL.createObjectURL(new Blob([data[i].data]));
+      }
+    });
+  
+  });
+    this._client2.on('stream', function(stream){
+    
+    stream.on('data', function(data){
+      for(var i = 0,  ii = data.length; i < ii; i++) {
+        var id = data[i].id;
+        self._images[id].src = self._URL.createObjectURL(new Blob([data[i].data]));
+      }
+    });
+  
+  });
+    this._client3.on('stream', function(stream){
     
     stream.on('data', function(data){
       for(var i = 0,  ii = data.length; i < ii; i++) {
@@ -102,8 +124,10 @@ function ImgsClient(url, options) {
 ImgsClient.prototype._init = function(){
  // Initial load
   var imgs = document.getElementsByTagName('img');
+  var part = Math.ceil(imgs.length/3);
   var data = [];
-  for (var i = 0, ii = imgs.length; i < ii; i++) {
+  for(var j = 0; j < 3; j++) {
+  for (var i = j*part; ii = (j+1)*part; i < ii; i++) {
     var src;
     if(src = imgs[i].getAttribute('stream')) {
       var imageId = this._imageId++;
@@ -116,7 +140,9 @@ ImgsClient.prototype._init = function(){
       }
     }
   }
-  this._client.send(data,{type: 'request'});
+  
+  this.['_client'+(j+1)].send(data,{type: 'request'});
+  }
 };
 
 
