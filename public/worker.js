@@ -18,6 +18,7 @@ function ImgsClient(url, images) {
   
   this._client.on('open', function(){
     self._init();
+    
   });
   
   this._client.on('stream', function(stream, command){
