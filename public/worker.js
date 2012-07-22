@@ -39,6 +39,7 @@ ImgsClient.prototype.request = function(images){
       var src = images[i].src;
       this._request.write({type: 'image', src: src, id: imageId});   
     }
+    throw new Error('all written');
   }
 }
 
