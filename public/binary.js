@@ -356,7 +356,7 @@ BlobReadStream.prototype._read = function(){
   if (readDelay !== 0){
     this._timeoutId = setTimeout(emitReadChunk, readDelay);
   } else {
-    emitReadChunk();
+    setZeroTimeout(emitReadChunk);
   }
     
 };
