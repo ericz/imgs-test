@@ -72,7 +72,6 @@ function ImgsClient(url, options) {
   this._client3.on('open', function(){
     console.log('open');
   
-    self._init();
   });
   
   this._client1.on('stream', function(stream){
