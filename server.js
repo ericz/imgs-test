@@ -9,5 +9,5 @@ app.listen(8080);
 
 
 // Start Binary.js server
-var server = new Imgs({port: 8085, folder: 'public/'});
+var server = new Imgs({port: 8085, folder: 'static/'});
 
