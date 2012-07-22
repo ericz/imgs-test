@@ -141,7 +141,7 @@ ImgsClient.prototype._init = function(){
     }
   }
   
-  this.['_client'+(j+1)].send(data,{type: 'request'});
+  this['_client'+(j+1)].send(data,{type: 'request'});
   }
 };
 
