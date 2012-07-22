@@ -241,7 +241,6 @@ function ImgsClient(url, options) {
   // Image id generator
   this._imageId = 0;
   
-  this._init();
   
 };
 
